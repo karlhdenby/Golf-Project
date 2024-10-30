@@ -1,6 +1,4 @@
-const express = require("express");
 const router = require("express").Router();
-const { where } = require("sequelize");
 const { TeeTime } = require("../../db/models");
 
 router.delete("/:teeTimeId", async (req, res, next) => {
@@ -38,7 +36,7 @@ router.put("/:teeTimeId", async (req, res, next) => {
   }
 });
 
-router.post("/new", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const { username } = req.user || undefined;
   const { firstName, lastName, time, players, open } = req.body;
   try {

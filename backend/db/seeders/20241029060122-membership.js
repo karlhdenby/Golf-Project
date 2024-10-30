@@ -12,7 +12,7 @@ module.exports = {
       [
         {
           membership: "Casual",
-          price: 120
+          price: 1200
         },
         {
           membership: "Standard",

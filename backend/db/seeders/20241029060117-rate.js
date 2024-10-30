@@ -11,8 +11,16 @@ module.exports = {
       "Rates",
       [
         {
-          item: "TaylorMade Golf Set",
-          price: 1200
+          item: "9 holes",
+          price: 30
+        },
+        {
+          item: "18 holes",
+          price: 50
+        },
+        {
+          item: "Cart Seat",
+          price: 20
         },
         
       ],

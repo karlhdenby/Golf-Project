@@ -20,7 +20,7 @@ module.exports = {
           phoneNumber: "360-941-9691",
           courseId: null,
           employee: true,
-          rank: 4,
+          rank: 5,
           hashedPassword: bcrypt.hashSync("password"),
         },
       ],
