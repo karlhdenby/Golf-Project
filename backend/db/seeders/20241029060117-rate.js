@@ -29,7 +29,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    options.tableName = "Rates";
+    options.tableName = "Rate";
     return queryInterface.bulkDelete(
       options,
       {
