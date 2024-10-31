@@ -1,91 +1,102 @@
-# Golf Project
+# Golf-Project
 
-This project is a backend API for managing user sessions and tee times in a golf application. It includes user authentication, tee time creation, update, and deletion, as well as CSRF token handling.
-
-## API Routes
-
-### Authentication Routes
-
-These routes handle user login, logout, signup, and session restoration.
-
-#### Session Routes (`/api/session`)
-
-- **POST `/api/session`** - Logs a user in by verifying the provided credentials (either email or username) and password. Returns the user's information if successful and sets a session token.
-  - **Request Body**: `{ credential: <string>, password: <string> }`
-  - **Response**:
-    - `200 OK`: `{ user: { id, email, username } }`
-    - `401 Unauthorized`: `{ errors: { credential: "The provided credentials were invalid." } }`
-
-- **DELETE `/api/session`** - Logs a user out by clearing the session token cookie.
-  - **Response**:
-    - `200 OK`: `{ message: "success" }`
-
-- **GET `/api/session`** - Restores the session of a logged-in user by returning their information if a valid session exists.
-  - **Response**:
-    - `200 OK`: `{ user: { id, email, username } }` if user is logged in.
-    - `200 OK`: `{ user: null }` if no session exists.
-
-#### User Routes (`/api/users`)
-
-- **POST `/api/users`** - Creates a new user account with the provided email, username, and password. The password is hashed before being stored.
-  - **Request Body**: `{ email: <string>, username: <string>, password: <string> }`
-  - **Response**:
-    - `200 OK`: `{ user: { id, email, username } }`
-    - `400 Bad Request`: Error message if validation fails (e.g., invalid email format or short password).
-
-### Tee Time Routes (`/api/teetimes`)
-
-These routes handle the creation, modification, deletion, and retrieval of tee times. Authentication is required for certain actions.
-
-- **GET `/api/teetimes`** - Retrieves a list of all tee times.
-  - **Response**:
-    - `200 OK`: `{ teeTimes: [ { id, username, firstName, lastName, time, players, open }, ... ] }`
-
-- **POST `/api/teetimes/new`** - Creates a new tee time. Requires the user to be authenticated.
-  - **Request Body**: `{ firstName: <string>, lastName: <string>, time: <string>, players: <number>, open: <boolean> }`
-  - **Response**:
-    - `200 OK`: `{ id, username, firstName, lastName, time, players, open }`
-
-- **PUT `/api/teetimes/:teeTimeId`** - Updates a specific tee time if the authenticated user owns it.
-  - **Request Parameters**: `teeTimeId` (ID of the tee time to update)
-  - **Request Body**: `{ fieldName: <newValue>, ... }` (any fields to update)
-  - **Response**:
-    - `200 OK`: Updated tee time object.
-    - `403 Forbidden`: `{ message: "Tee Time must belong to current user" }` if the user does not own the tee time.
-
-- **DELETE `/api/teetimes/:teeTimeId`** - Deletes a specific tee time if the authenticated user owns it.
-  - **Request Parameters**: `teeTimeId` (ID of the tee time to delete)
-  - **Response**:
-    - `200 OK`: `{ message: "Successfully cancelled tee time" }`
-    - `403 Forbidden`: `{ message: "Tee Time must belong to current user" }` if the user does not own the tee time.
-
-### CSRF Token Route
-
-- **GET `/api/csrf/restore`** - Restores the CSRF token for security purposes, setting it in a cookie for frontend use.
-  - **Response**:
-    - `200 OK`: `{ "XSRF-Token": <token> }`
-
-### Test Route
-
-- **POST `/api/test`** - A test route for debugging that echoes the request body.
-  - **Request Body**: `{ anyKey: anyValue }`
-  - **Response**:
-    - `200 OK`: `{ requestBody: req.body }`
+## Description
+This project provides a backend for managing memberships, rates, and user permissions for a golf course.
 
 ---
 
-## Middleware
+### Routes
 
-- **restoreUser** - Middleware that checks the validity of the current session. If valid, it sets `req.user` to the current user; otherwise, `req.user` is `null`.
-- **validateLogin** - Middleware that validates the `credential` and `password` fields during login.
-- **validateSignup** - Middleware that validates the `email`, `username`, and `password` fields during signup.
+#### User Signup Route
+
+- **POST** `/api/users`
+  - Registers a new user with a hashed password and stores a secure cookie.
+  - **Validation**: 
+    - `email` must be valid.
+    - `username` must be at least 4 characters and not an email.
+    - `password` must be at least 6 characters.
+  - **Response**: Returns the `id`, `email`, and `username` of the created user.
+
+#### CSRF Token Route
+
+- **GET** `/api/csrf/restore`
+  - Restores the CSRF token and sets it in a cookie.
+  - **Response**: JSON object containing the CSRF token.
 
 ---
 
-### Running the Project
+### Membership Routes
 
-To start the server, run:
+- **GET** `/api/memberships`
+  - Fetches all memberships.
+  - **Response**: Returns an array of all membership records.
 
-```bash
-npm install
-npm start
+- **POST** `/api/memberships`
+  - Creates a new membership with the given details.
+  - **Body Parameters**:
+    - `membership` - The name/type of the membership.
+    - `price` - The price of the membership.
+    - `description` - Description of the membership.
+  - **Response**: Returns the created membership.
+
+- **PUT** `/api/memberships/:membershipId`
+  - Updates an existing membership.
+  - **Parameters**: `membershipId` - ID of the membership to update.
+  - **Body Parameters**: Properties to update in the membership.
+  - **Authorization**: Requires a user rank of 3 or higher.
+  - **Response**: Returns the updated membership.
+
+- **DELETE** `/api/memberships/:membershipId`
+  - Deletes a specific membership by its ID.
+  - **Parameters**: `membershipId` - ID of the membership to delete.
+  - **Authorization**: Requires a user rank of 3 or higher.
+  - **Response**: Confirmation message on successful deletion.
+
+---
+
+### Rate Routes
+
+- **GET** `/api/rates`
+  - Fetches all rates.
+  - **Response**: Returns an array of all rate records.
+
+- **POST** `/api/rates`
+  - Creates a new rate with the given details.
+  - **Body Parameters**:
+    - `item` - The name of the item being rated.
+    - `price` - The price associated with the item.
+  - **Response**: Returns the created rate.
+
+- **PUT** `/api/rates/:rateId`
+  - Updates an existing rate.
+  - **Parameters**: `rateId` - ID of the rate to update.
+  - **Body Parameters**: Properties to update in the rate.
+  - **Authorization**: Requires a user rank of 3 or higher.
+  - **Response**: Returns the updated rate.
+
+- **DELETE** `/api/rates/:rateId`
+  - Deletes a specific rate by its ID.
+  - **Parameters**: `rateId` - ID of the rate to delete.
+  - **Authorization**: Requires a user rank of 3 or higher.
+  - **Response**: Confirmation message on successful deletion.
+
+---
+
+### Error Handling
+- Each route includes basic error handling that returns the error details if any issues occur during the process.
+
+---
+
+## Additional Notes
+- Make sure to have the `Membership` and `Rate` models properly defined in your database models.
+- Use proper authentication and authorization mechanisms to protect sensitive routes.
+- Follow RESTful principles to maintain a clean and organized API structure.
+
+---
+
+## Installation
+To run the project locally:
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
