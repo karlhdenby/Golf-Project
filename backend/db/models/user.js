@@ -39,7 +39,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     phoneNumber: DataTypes.STRING,
     courseId: DataTypes.INTEGER,
-    membership: DataTypes.STRING,
+    membership: {
+      type: DataTypes.STRING,
+      references: {
+        model: "Membership"
+      }
+    },
     employee: DataTypes.BOOLEAN,
     rank: DataTypes.INTEGER,
     hashedPassword: {

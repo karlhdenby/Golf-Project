@@ -15,7 +15,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   TeeTime.init({
     time: DataTypes.DATE,
-    username: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING,
+      references: {
+        model: "Users"
+      }
+    },
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     players: DataTypes.INTEGER,
