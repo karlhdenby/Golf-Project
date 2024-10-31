@@ -32,9 +32,6 @@ module.exports = {
     options.tableName = "Rates";
     return queryInterface.bulkDelete(
       options,
-      {
-        username: "Karl",
-      },
       {}
     );
   },
