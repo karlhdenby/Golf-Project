@@ -1,6 +1,6 @@
 "use strict";
 
-const { User } = require("../models");
+const { TeeTime } = require("../models");
 const bcrypt = require("bcryptjs");
 
 let options = {};
@@ -11,8 +11,7 @@ if (process.env.NODE_ENV === "production") {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(
-      "TeeTimes",
+    await TeeTime.bulkCreate(
       [
         {
           time: "2024-11-05 14:00:00.000000",
@@ -36,7 +35,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    options.tableName = "TeeTime";
+    options.tableName = "TeeTimes";
     return queryInterface.bulkDelete(
       options,
       {

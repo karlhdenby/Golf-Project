@@ -1,4 +1,5 @@
 'use strict';
+const { Rate } = require("../models")
 
 /** @type {import('sequelize-cli').Migration} */
 let options = {};
@@ -7,8 +8,7 @@ if (process.env.NODE_ENV === "production") {
 }
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert(
-      "Rates",
+    await Rate.bulkCreate(
       [
         {
           item: "9 holes",
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    options.tableName = "Rate";
+    options.tableName = "Rates";
     return queryInterface.bulkDelete(
       options,
       {
