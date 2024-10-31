@@ -8,7 +8,14 @@
     "sequelize": "npm run --prefix backend sequelize",
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
     "start": "npm start --prefix backend",
-    "build": "npm run --prefix backend build",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+    "build": "npm run --prefix backend build"
+  },
+  "name": "golf-project",
+  "version": "1.0.0",
+  "description": "## Description This project provides a backend for managing memberships, rates, tee times, and user permissions for a golf course.",
+  "main": "index.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
