@@ -33,9 +33,6 @@ module.exports = {
     options.tableName = "TeeTimes";
     return queryInterface.bulkDelete(
       options,
-      {
-        price,
-      },
       {}
     );
   },
