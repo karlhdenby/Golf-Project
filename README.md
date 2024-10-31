@@ -1,7 +1,7 @@
 # Golf-Project
 
 ## Description
-This project provides a backend for managing memberships, rates, and user permissions for a golf course.
+This project provides a backend for managing memberships, rates, tee times, and user permissions for a golf course.
 
 ---
 
@@ -82,13 +82,45 @@ This project provides a backend for managing memberships, rates, and user permis
 
 ---
 
+### TeeTime Routes
+
+- **GET** `/api/teeTimes`
+  - Fetches all tee times.
+  - **Response**: Returns an array of all tee time records.
+
+- **POST** `/api/teeTimes`
+  - Creates a new tee time.
+  - **Body Parameters**:
+    - `firstName` - First name of the player.
+    - `lastName` - Last name of the player.
+    - `time` - Time for the tee time.
+    - `players` - Number of players.
+    - `open` - Boolean indicating if the tee time is open for others to join.
+  - **Authorization**: Requires the `username` from the logged-in user.
+  - **Response**: Returns the created tee time.
+
+- **PUT** `/api/teeTimes/:teeTimeId`
+  - Updates an existing tee time.
+  - **Parameters**: `teeTimeId` - ID of the tee time to update.
+  - **Body Parameters**: Properties to update in the tee time.
+  - **Authorization**: The tee time must belong to the current user (`username` in the request must match the tee time's `username`).
+  - **Response**: Returns the updated tee time.
+
+- **DELETE** `/api/teeTimes/:teeTimeId`
+  - Deletes a specific tee time by its ID.
+  - **Parameters**: `teeTimeId` - ID of the tee time to delete.
+  - **Authorization**: The tee time must belong to the current user (`username` in the request must match the tee time's `username`).
+  - **Response**: Confirmation message on successful deletion.
+
+---
+
 ### Error Handling
 - Each route includes basic error handling that returns the error details if any issues occur during the process.
 
 ---
 
 ## Additional Notes
-- Make sure to have the `Membership` and `Rate` models properly defined in your database models.
+- Make sure to have the `Membership`, `Rate`, and `TeeTime` models properly defined in your database models.
 - Use proper authentication and authorization mechanisms to protect sensitive routes.
 - Follow RESTful principles to maintain a clean and organized API structure.
 
