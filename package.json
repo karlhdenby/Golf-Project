@@ -4,7 +4,6 @@
   },
   "scripts": {
     "install": "npm --prefix backend install backend",
-    "install -D": "npm --prefix backend install -D backend",
     "dev:backend": "npm install --prefix backend start",
     "sequelize": "npm run --prefix backend sequelize",
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
