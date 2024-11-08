@@ -1,0 +1,10 @@
+.profile-dropdown {
+    visibility: visible;
+    flex-direction: column;
+    
+}
+
+.profile-dropdown-hidden{
+    visibility: hidden;
+    flex-direction: column;
+}

@@ -11,15 +11,15 @@ module.exports = {
     await Rate.bulkCreate(
       [
         {
-          item: "9 holes",
+          item: "nineHoles",
           price: 30
         },
         {
-          item: "18 holes",
+          item: "eighteenHoles",
           price: 50
         },
         {
-          item: "Cart Seat",
+          item: "cartSeat",
           price: 20
         },
         

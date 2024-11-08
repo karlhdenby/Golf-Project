@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormModal/SignupFormModal';
 import Navigation from './Navigation/Navigation';
 import * as sessionActions from './store/session';
+import { Rates } from './components/Rates/Rates';
+import { Menu } from './components/Menu/Menu';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -17,8 +19,8 @@ function Layout() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
       {isLoaded && <Outlet />}
+      <Navigation isLoaded={isLoaded} />
     </>
   );
 }
@@ -29,11 +31,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <h1>Welcome!</h1>
+        element: <Rates />
       },
       {
         path: "signup",
         element: <SignupFormPage />
+      },
+      {
+        path: '/restaurant',
+        element: <Menu />
       }
     ]
   }

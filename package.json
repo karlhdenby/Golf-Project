@@ -1,5 +1,10 @@
 {
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-regular-svg-icons": "^6.6.0",
+    "@fortawesome/free-solid-svg-icons": "^6.6.0",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "express-validator": "^7.2.0"
   },
   "scripts": {
@@ -14,7 +19,6 @@
   "version": "1.0.0",
   "description": "## Description This project provides a backend for managing memberships, rates, tee times, and user permissions for a golf course.",
   "main": "index.js",
-  "devDependencies": {},
   "keywords": [],
   "author": "",
   "license": "ISC"

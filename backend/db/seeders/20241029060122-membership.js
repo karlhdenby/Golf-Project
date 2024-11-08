@@ -13,15 +13,15 @@ module.exports = {
     await Membership.bulkCreate(
       [
         {
-          membership: "Casual",
+          membership: "casual",
           price: 1200
         },
         {
-          membership: "Standard",
+          membership: "standard",
           price: 1750
         },
         {
-          membership: "Premium",
+          membership: "premium",
           price: 2200
         },
       ],

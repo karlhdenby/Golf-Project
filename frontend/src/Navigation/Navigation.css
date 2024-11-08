@@ -1,0 +1,81 @@
+.navbar {
+    display: flex;
+    position: absolute;
+    width: 99.3%;
+    justify-content: space-between;
+    margin-right: 10px;
+    background-color: rgba(10, 10, 10, 0.727);
+    z-index: 1;
+    top: 0;
+    border-bottom: 1px solid black;
+}
+
+ul {
+    display: flex;
+    align-items: flex-end;
+    height: fit-content;
+    margin-right: 10px;
+}
+
+ul a {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    
+}
+
+.navbar-logo {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    width: fit-content;
+    text-align: center;
+    align-items: center;
+    height: fit-content;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.navbar-logo h2 {
+    font-size: 32px;
+    margin: 0px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    height: 31px;
+    color: rgb(230, 230, 230);
+}
+
+.navbar-logo h3 {
+    font-size: 14px;
+    margin: 0px;
+    letter-spacing: 5px;
+    font-weight: 500;
+    height: 13px;
+    color: rgb(230, 230, 230);
+}
+
+.navbar-logo img{
+    display: flex;
+    width: 200px;
+    height: 75px;
+    
+}
+
+.profile-button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile-button button{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+
+body {
+    background-color: rgb(37, 36, 36);
+    font-family: "Newsreader", serif;
+    color: rgb(230, 230, 230);
+}

@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaUserCircle } from 'react-icons/fa';
 import * as sessionActions from '../store/session';
-import OpenModalButton from '../components/OpenModalButton/OpenModalButton';
+import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../components/LoginFormModal/LoginFormModal';
 import SignupFormModal from '../components/SignupFormModal/SignupFormModal';
+import './ProfileButton.css'
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ function ProfileButton({ user }) {
   const ulRef = useRef();
 
   const toggleMenu = (e) => {
+    console.log(showMenu)
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
     setShowMenu(!showMenu);
   };
@@ -38,7 +40,7 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : "");
 
   return (
     <>
@@ -48,9 +50,7 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
             <li>{user.firstName} {user.lastName}</li>
-            <li>{user.email}</li>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
@@ -58,14 +58,14 @@ function ProfileButton({ user }) {
         ) : (
           <>
             <li>
-              <OpenModalButton
+              <OpenModalMenuItem
                 buttonText="Log In"
                 onButtonClick={closeMenu}
                 modalComponent={<LoginFormModal />}
               />
             </li>
             <li>
-              <OpenModalButton
+              <OpenModalMenuItem
                 buttonText="Sign Up"
                 onButtonClick={closeMenu}
                 modalComponent={<SignupFormModal />}
