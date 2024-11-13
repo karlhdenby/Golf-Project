@@ -37,18 +37,19 @@ function Navigation({ isLoaded }) {
 
   return (
     <div className="navbar">
+      <img className="bird-logo" src="/bird-logo.png" alt="gleneaglelogo" />
     <NavLink to="/" className="navbar-logo">
     <h2>
       GLENEAGLE
     </h2>
     <h3>
-      Golf Course
+      Golf Course - Arlington, WA
     </h3>
-        <img
+        {/* <img
           src="/image-removebg.png"
           alt="Airbnb logo"
           className="logo"
-        />
+        /> */}
       </NavLink>
     <ul className="links">
       <ul>

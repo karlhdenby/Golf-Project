@@ -1,13 +1,26 @@
 .navbar {
     display: flex;
-    position: absolute;
-    width: 99.3%;
-    justify-content: space-between;
-    margin-right: 10px;
-    background-color: rgba(10, 10, 10, 0.727);
+    position: fixed;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(7, 5, 15, 0.779);
+    border-bottom: 2px solid black;
     z-index: 1;
+    font-size: 1.1em;
     top: 0;
-    border-bottom: 1px solid black;
+    left: 0;
+}
+
+.bird-logo {
+    width: 15dvw;
+    height: 11dvh;
+    margin-right: 20dvh;
+}
+
+.navbar a {
+    color: #cce0dd;
+    padding: 10px;
 }
 
 ul {
@@ -30,14 +43,11 @@ ul a {
     color: black;
     width: fit-content;
     text-align: center;
-    align-items: center;
     height: fit-content;
-    margin-left: 20px;
-    margin-top: 20px;
 }
 
 .navbar-logo h2 {
-    font-size: 32px;
+    font-size: 62px;
     margin: 0px;
     letter-spacing: 2px;
     font-weight: 500;
@@ -46,9 +56,10 @@ ul a {
 }
 
 .navbar-logo h3 {
-    font-size: 14px;
+    font-size: 15px;
     margin: 0px;
-    letter-spacing: 5px;
+    margin-top: 30px;
+    letter-spacing: 2px;
     font-weight: 500;
     height: 13px;
     color: rgb(230, 230, 230);
@@ -74,8 +85,6 @@ ul a {
 }
 
 
-body {
-    background-color: rgb(37, 36, 36);
-    font-family: "Newsreader", serif;
-    color: rgb(230, 230, 230);
+.bird-logo {
+    opacity: .85;
 }

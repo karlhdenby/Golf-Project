@@ -19,12 +19,8 @@ export const Rates = () => {
   console.log(rates);
   return (
     <>
-      <img
-        className="background"
-        src="/BT5A1397.jpg"
-        alt="Picture of clubhouse"
-      />
-      <h1>Green Fees</h1>
+      <img src="/BT5A1486.jpg" className="background-rates" alt="Picture of clubhouse" />
+      <h1 className="h1">Green Fees</h1>
       <div className="rates">
         <div className="spring">
           <div className="subtitle">
@@ -64,10 +60,10 @@ export const Rates = () => {
               <p>Junior (17-):</p>
               <ul>$25</ul>
             </div>
-             <div className="cost">
+            <div className="cost">
               <p>Senior (60+):</p>
               <ul>$30</ul>
-             </div>
+            </div>
           </div>
         </div>
         <div className="summer">
@@ -108,10 +104,10 @@ export const Rates = () => {
               <p>Junior (17-):</p>
               <ul>$25</ul>
             </div>
-             <div className="cost">
+            <div className="cost">
               <p>Senior (60+):</p>
               <ul>$30</ul>
-             </div>
+            </div>
           </div>
         </div>
         <div className="fall">
@@ -152,10 +148,10 @@ export const Rates = () => {
               <p>Junior (17-):</p>
               <ul>$25</ul>
             </div>
-             <div className="cost">
+            <div className="cost">
               <p>Senior (60+):</p>
               <ul>$30</ul>
-             </div>
+            </div>
           </div>
         </div>
         <div className="winter">
@@ -196,10 +192,10 @@ export const Rates = () => {
               <p>Junior (17-):</p>
               <ul>$25</ul>
             </div>
-             <div className="cost">
+            <div className="cost">
               <p>Senior (60+):</p>
               <ul>$30</ul>
-             </div>
+            </div>
           </div>
         </div>
       </div>

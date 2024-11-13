@@ -1,33 +1,24 @@
 .rates {
-  display: flex;
-  justify-content: space-between;
   font-weight: 300;
-  z-index: 1;
-  position: absolute;
-  top: 30%;
-  right: 3%;
-  background-color: rgba(0, 0, 0, 0.748);
-  padding: 50px;
-  padding-top: 150px;
+  background-color: rgba(3, 3, 3, 0.75);
+  padding: 20px 30px;
   border-radius: 15px;
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 20px rgba(33, 18, 18, 0.808);
   color: #cce0dd;
+  display: flex;
+  text-align: left;
+  width: 95%;
+  align-self: center;
+  justify-content: center;
 }
 
-h1 {
-  display: flex;
-  justify-content: center;
-  font-family: "Oswald", serif;
-  font-weight: 300;
-  font-size: 45px;
-  margin-top: 150px;
-  z-index: 2;
-  position: absolute;
-  top: 10%;
-  right: 42%;
-  color: #cce0dd;text-shadow:
-  1px 1px 1px black,
-  2px 2px 1px black;
+.h1 {
+  font-size: 3em;
+  text-align: center;
+  margin-top: 35dvh;
+  margin-bottom: 10dvh;
+  color: #cce0dd;
+  text-shadow: 1px 1px 1px black, 2px 2px 1px black;
 }
 
 h2 {
@@ -54,6 +45,7 @@ ul {
   margin: 0;
   padding: 0%;
   justify-content: center;
+  width: fit-content;
 }
 
 .subtitle img {
@@ -75,6 +67,9 @@ ul {
   align-items: center;
   justify-content: space-between;
   width: 250px;
+  margin: 6px;
+  padding-bottom: 5px;
+  border-bottom: 2px dotted black;
 }
 
 .cost ul {
@@ -95,17 +90,51 @@ ul {
 }
 
 .winter {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 15px;
+  align-items: center
 }
 
 .summer {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 15px;
+  align-items: center
 }
 
 .fall {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 15px;
+  align-items: center
 }
 
 .spring {
-  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 15px;
+  align-items: center
+}
+
+.background-rates {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+body {
+  background-color: rgb(37, 36, 36);
+  font-family: "Newsreader", serif;
+  color: rgb(230, 230, 230);
+  justify-items: center;
 }
