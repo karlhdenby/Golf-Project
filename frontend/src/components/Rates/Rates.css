@@ -10,9 +10,11 @@
   width: 95%;
   align-self: center;
   justify-content: center;
+  margin-top: 30dvh;
 }
 
 .h1 {
+  font-family: "Oswald", serif;
   font-size: 3em;
   text-align: center;
   margin-top: 35dvh;
@@ -41,7 +43,6 @@ ul {
 
 .subtitle {
   display: flex;
-  margin-right: 20px;
   margin: 0;
   padding: 0%;
   justify-content: center;
@@ -49,7 +50,6 @@ ul {
 }
 
 .subtitle img {
-  margin-left: 20px;
   display: flex;
   width: 35px;
   padding: 0%;
@@ -134,7 +134,6 @@ ul {
 
 body {
   background-color: rgb(37, 36, 36);
-  font-family: "Newsreader", serif;
   color: rgb(230, 230, 230);
   justify-items: center;
 }

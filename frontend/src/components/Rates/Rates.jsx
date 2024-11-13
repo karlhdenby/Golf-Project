@@ -20,12 +20,10 @@ export const Rates = () => {
   return (
     <>
       <img src="/BT5A1486.jpg" className="background-rates" alt="Picture of clubhouse" />
-      <h1 className="h1">Green Fees</h1>
       <div className="rates">
         <div className="spring">
           <div className="subtitle">
             <h2>Spring</h2>
-            <img src="/flowers3-svgrepo-com.svg" />
           </div>
           <div className="prices">
             <div className="cost">
@@ -69,7 +67,6 @@ export const Rates = () => {
         <div className="summer">
           <div className="subtitle">
             <h2>Summer</h2>
-            <img src="/sun-solid.svg" />
           </div>
           <div className="prices">
             <div className="cost">
@@ -113,7 +110,6 @@ export const Rates = () => {
         <div className="fall">
           <div className="subtitle">
             <h2>Fall</h2>
-            <img src="/canadian-maple-leaf-brands-solid.svg" />
           </div>
           <div className="prices">
             <div className="cost">
@@ -157,7 +153,6 @@ export const Rates = () => {
         <div className="winter">
           <div className="subtitle">
             <h2>Winter</h2>
-            <img src="/snowflake-solid.svg" />
           </div>
           <div className="prices">
             <div className="cost">
