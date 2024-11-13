@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
-import OpenModalButton from "../components/OpenModalButton/OpenModalButton.jsx"
-import LoginFormModal from "../components/LoginFormModal/LoginFormModal.jsx";
-import SignupFormModal from "../components/SignupFormModal/SignupFormModal.jsx";
+import OpenModalButton from "../OpenModalButton/OpenModalButton.jsx"
+import LoginFormModal from "../LoginFormModal/LoginFormModal.jsx";
+import SignupFormModal from "../SignupFormModal/SignupFormModal.jsx";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
