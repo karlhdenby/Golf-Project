@@ -1,5 +1,4 @@
 
-
 .background-menu {
     position: relative;
     z-index: -1;
@@ -25,9 +24,13 @@ h1 {
 .page {
     position: absolute;
     z-index: 0;
-    left: 26%;
-    top: 30%;
     width: 50%;
     height: 110%;
     border: none;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

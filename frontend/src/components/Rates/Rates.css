@@ -1,4 +1,12 @@
+.fees {
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+
 .rates {
+  position: absolute;
   font-weight: 300;
   background-color: rgba(3, 3, 3, 0.75);
   padding: 20px 30px;
@@ -7,9 +15,10 @@
   color: #cce0dd;
   display: flex;
   text-align: left;
-  width: 95%;
-  align-self: center;
-  justify-content: center;
+  width: 90%;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1;
   margin-top: 30dvh;
 }
 
@@ -122,14 +131,9 @@ ul {
 }
 
 .background-rates {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  object-position: center;
-  position: absolute;
+  display: flex;
+  width: 100dvw;
   z-index: -1;
-  top: 0;
-  left: 0;
 }
 
 body {

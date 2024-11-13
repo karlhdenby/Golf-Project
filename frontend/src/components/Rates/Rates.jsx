@@ -18,8 +18,12 @@ export const Rates = () => {
 
   console.log(rates);
   return (
-    <>
-      <img src="/BT5A1486.jpg" className="background-rates" alt="Picture of clubhouse" />
+    <div className="fees">
+      <img
+        src="/BT5A1486.jpg"
+        className="background-rates"
+        alt="Picture of clubhouse"
+      />
       <div className="rates">
         <div className="spring">
           <div className="subtitle">
@@ -194,6 +198,6 @@ export const Rates = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
