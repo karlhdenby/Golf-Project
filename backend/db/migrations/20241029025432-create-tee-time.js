@@ -6,48 +6,53 @@ if (process.env.NODE_ENV === "production") {
 }
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("TeeTimes", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER,
+    await queryInterface.createTable(
+      "TeeTimes",
+      {
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: Sequelize.INTEGER,
+        },
+        time: {
+          type: Sequelize.DATE,
+          allowNull: false,
+        },
+        username: {
+          type: Sequelize.STRING,
+          allowNull: true,
+        },
+        firstName: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        lastName: {
+          type: Sequelize.STRING,
+          allowNull: false,
+        },
+        players: {
+          type: Sequelize.INTEGER,
+          allowNull: false,
+        },
+        open: {
+          type: Sequelize.BOOLEAN,
+          allowNull: false,
+        },
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+      
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
+        },
       },
-      time: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      username: {
-        type: Sequelize.STRING,
-        allowNull: true,
-      },
-      firstName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      lastName: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      players: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      open: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE,
-        defaultValue: Sequelize.literal("CURRENT_TIMESTAMP"),
-      },
-    }, options);
+      options
+    );
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "TeeTimes";

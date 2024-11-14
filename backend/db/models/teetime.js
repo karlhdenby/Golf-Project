@@ -24,10 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     players: DataTypes.INTEGER,
-    open: DataTypes.BOOLEAN
+    open: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'TeeTime',
+  
   });
   return TeeTime;
 };

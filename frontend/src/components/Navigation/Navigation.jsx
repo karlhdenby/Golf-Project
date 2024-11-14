@@ -51,6 +51,9 @@ function Navigation({ isLoaded }) {
         <ul>
           <NavLink to="/restaurant">Restaurant</NavLink>
         </ul>
+        <ul>
+          <NavLink id="book" to="/teetimes">Book a Tee Time</NavLink>
+        </ul>
         {isLoaded && sessionLinks}
       </ul>
     </div>

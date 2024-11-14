@@ -1,0 +1,13 @@
+
+.teetimes {
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.teetimes div{
+    display: flex;
+    padding: 10px;
+}

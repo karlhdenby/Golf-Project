@@ -6,6 +6,7 @@ import Navigation from './components/Navigation/Navigation';
 import * as sessionActions from './store/session';
 import { Rates } from './components/Rates/Rates';
 import { Menu } from './components/Menu/Menu';
+import { Teetime } from './components/TeeTimes/Teetimes';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: '/restaurant',
         element: <Menu />
+      },
+      {
+        path: '/teetimes',
+        element: <Teetime />
       }
     ]
   }
