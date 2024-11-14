@@ -26,7 +26,7 @@ ul {
     display: flex;
     align-items: flex-end;
     height: fit-content;
-    padding: 0;
+    padding: 3px;
 }
 
 ul a {

@@ -19,17 +19,6 @@
   justify-content: space-around;
   align-items: center;
   z-index: 1;
-  margin-top: 30dvh;
-}
-
-.h1 {
-  font-family: "Oswald", serif;
-  font-size: 3em;
-  text-align: center;
-  margin-top: 35dvh;
-  margin-bottom: 10dvh;
-  color: #cce0dd;
-  text-shadow: 1px 1px 1px black, 2px 2px 1px black;
 }
 
 h2 {
@@ -103,7 +92,8 @@ ul {
   flex-direction: column;
   width: fit-content;
   padding: 15px;
-  align-items: center
+  align-items: center;
+  text-shadow: 1px 1px 1px rgb(black), 2px 2px 1px black;
 }
 
 .summer {
@@ -111,7 +101,8 @@ ul {
   flex-direction: column;
   width: fit-content;
   padding: 15px;
-  align-items: center
+  align-items: center;
+  text-shadow: 1px 1px 1px rgb(black), 2px 2px 1px black;
 }
 
 .fall {
@@ -119,7 +110,8 @@ ul {
   flex-direction: column;
   width: fit-content;
   padding: 15px;
-  align-items: center
+  align-items: center;
+  text-shadow: 1px 1px 1px rgb(black), 2px 2px 1px black;
 }
 
 .spring {
@@ -127,7 +119,8 @@ ul {
   flex-direction: column;
   width: fit-content;
   padding: 15px;
-  align-items: center
+  align-items: center;
+  text-shadow: 1px 1px 1px rgb(black), 2px 2px 1px black;
 }
 
 .background-rates {
