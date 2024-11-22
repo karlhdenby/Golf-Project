@@ -1,0 +1,50 @@
+.days {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  width: fit-content
+}
+
+.days div {
+  display: flex;
+  text-align: center;
+}
+
+.days div p {
+    width: 3dvw;
+    height: 6dvh;
+    margin: 0;
+    font-size: xx-large;
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
+}
+
+.week-0 {
+  display: flex;
+  justify-content: end;
+}
+
+.week-1 {
+  display: flex;
+  justify-content: end;
+}
+
+.week-2 {
+  display: flex;
+  justify-content: end;
+}
+
+.week-3 {
+  display: flex;
+  justify-content: end;
+}
+
+.week-4 {
+  display: flex;
+}
