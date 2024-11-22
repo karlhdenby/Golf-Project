@@ -1,20 +1,35 @@
 .days {
+  margin-top: 10dvh;
   display: flex;
   flex-direction: column;
   height: fit-content;
   width: fit-content
 }
 
-.days div {
-  display: flex;
-  text-align: center;
+.days p {
+  padding: 5px;
 }
 
-.days div p {
-    width: 3dvw;
-    height: 6dvh;
+.week-days {
+  display: flex;
+}
+
+.week-days div{
+  display: flex;
+  justify-content: center;
+}
+
+.week-days p {
+  margin-top: 5dvh;
+  height: fit-content;
+}
+
+.days div div{
+    width: 8dvw;
+    height: 12dvh;
     margin: 0;
     font-size: xx-large;
+    border: 1px solid black;
 }
 
 
