@@ -1,7 +1,6 @@
 .booking {
     margin-top: 30dvh;
     display: flex;
-    height: 100dvh;
     flex-direction: column;
 }
 
@@ -19,6 +18,7 @@
 
 .hour-group {
     display: flex;
+    border-top: 1px solid black;
     border-bottom: 1px solid black;
 }
 

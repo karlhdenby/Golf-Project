@@ -3,8 +3,11 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getTeetimes } from "../../store/teetimes";
 import "./TeeTimePage.css";
+import { BookingModal } from "./BookingModal";
+import { useModal } from "../../context/Modal";
 
 export const TeeTimes = () => {
+  const {setModalContent} = useModal()
   const dispatch = useDispatch();
   const { month, day } = useParams();
   const [times, setTimes] = useState([]);
@@ -75,7 +78,7 @@ export const TeeTimes = () => {
           </div>
           {timeSlots.map((time) => (
             <div className="time" key={time}>
-              <h2 className={times.includes(time) ? "unavailable" : "available"}>
+              <h2 onClick={() => !times.includes(time) ? setModalContent(<BookingModal time={reverseDateMaker(time)}/>) : console.log(time)}className={times.includes(time) ? "unavailable" : "available"}>
                 {time}
               </h2>
             </div>
