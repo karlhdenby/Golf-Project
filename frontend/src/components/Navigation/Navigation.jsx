@@ -37,12 +37,12 @@ function Navigation({ isLoaded }) {
 
   return (
     <div className="navbar">
-      <NavLink to="/" >
-        <img className="bird-logo" src="/bird-logo.png" alt="gleneaglelogo" />
+      <NavLink to="/">
+        <h2>LOGO</h2>
       </NavLink>
       <div className="navbar-logo">
-      <h2>GLENEAGLE</h2>
-      <h3>Golf Course - Arlington, WA</h3>
+        <h2>GOLF COURSE</h2>
+        <h3>Golf Course - City, State</h3>
       </div>
       <ul className="links">
         <ul>
@@ -52,7 +52,9 @@ function Navigation({ isLoaded }) {
           <NavLink to="/restaurant">Restaurant</NavLink>
         </ul>
         <ul>
-          <NavLink id="book" to="/teetimes">Book a Tee Time</NavLink>
+          <NavLink id="book" to="/calendar">
+            Book a Tee Time
+          </NavLink>
         </ul>
         {isLoaded && sessionLinks}
       </ul>

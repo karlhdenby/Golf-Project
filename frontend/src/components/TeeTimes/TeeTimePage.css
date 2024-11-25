@@ -1,0 +1,66 @@
+.booking {
+    margin-top: 30dvh;
+    display: flex;
+    height: 100dvh;
+    flex-direction: column;
+}
+
+.daily {
+    display: flex;
+    flex-direction: column;
+    width: 80dvw;
+}
+
+.daily div {
+    display: flex;
+    border-bottom: 1px solid black;
+    justify-content: center;
+}
+
+.hour-group {
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+.daily h2 {
+    width: fit-content;
+}
+
+.label {
+    display: flex;
+    font-size: 4em;
+    text-shadow: 3px 3px 3px black, 3px 3px 3px black;
+    padding: 10px;
+    margin: 2px;
+}
+
+.time {
+    display: flex;
+    width: 15dvw;
+    border-right: 1px solid black;
+    justify-content: center;
+    align-items: center;
+}
+
+.available {
+    font-size: 3em;
+    margin: 0;
+    height: fit-content;
+    text-shadow: 0px 0px 3px green, 1px 1px 1px rgb(0, 0, 0);
+}
+
+.available:hover {
+    cursor: pointer;
+}
+
+.unavailable {
+    font-size: 3em;
+    margin: 0;
+    height: fit-content;
+    color: rgba(211, 211, 211, 0.149);   
+}
+
+.left {
+    width: 15dvw;
+    border-right: 2px solid black;
+}

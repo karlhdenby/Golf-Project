@@ -61,12 +61,11 @@ const initialState = {};
 const teetimesReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TEETIMES: {
-      const allTeetimes = {};
-      console.log(action.payload);
+      const allTeetimes = [];
       action.payload.forEach((a) => {
-        allTeetimes[a.item] = a;
+        allTeetimes.push(a);
       });
-      return allTeetimes;
+      return {...state, allTeetimes};
     }
     case NEW_TEETIME: {
       return { ...state, teetime: action.payload.teetime };

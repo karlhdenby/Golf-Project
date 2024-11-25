@@ -2,6 +2,7 @@
     display: flex;
     position: fixed;
     width: 100%;
+    height: fit-content;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(7, 5, 15, 0.779);
@@ -10,16 +11,19 @@
     font-size: 1.1em;
     top: 0;
     left: 0;
-}
-
-.bird-logo {
-    width: 17dvw;
-    height: 11dvh;
+    
 }
 
 .navbar a {
-    color: #cce0dd;
+    color: rgb(230, 230, 230);
     padding: 10px;
+    text-decoration: none;
+}
+
+.navbar a h2{
+    font-size: xxx-large;
+    margin: 0px;
+    margin-left: 2dvw;
 }
 
 ul {

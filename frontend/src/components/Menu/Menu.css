@@ -2,20 +2,21 @@
 .background-menu {
     position: relative;
     z-index: -1;
-    width: 100%;
+    width: 100dvw;
+    height: 220dvh;
 }
 
 h1 {
-    font-size: 2em;
+    font-size: 4em;
     text-align: center;
     margin: 20px auto;
-    color: #cce0dd;
+    color: rgb(230, 230, 230);
     text-shadow: 1px 1px 1px black, 2px 2px 1px black;
 }
 
 
 .navbar a {
-    color: #cce0dd;
+    color: #ffffff;
     padding: 10px;
 }
 
@@ -27,6 +28,7 @@ h1 {
     width: 50%;
     height: 110%;
     border: none;
+    margin-top: 75dvh;
 }
 
 .menu {

@@ -7,6 +7,7 @@ import * as sessionActions from './store/session';
 import { Rates } from './components/Rates/Rates';
 import { Menu } from './components/Menu/Menu';
 import { MonthView } from './components/Calendar/MonthView';
+import { TeeTimes } from './components/TeeTimes/TeeTimePage';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -43,8 +44,12 @@ const router = createBrowserRouter([
         element: <Menu />
       },
       {
-        path: '/teetimes',
+        path: '/calendar',
         element: <MonthView />
+      },
+      {
+        path: '/teetimes/:month/:day',
+        element: <TeeTimes />
       }
     ]
   }

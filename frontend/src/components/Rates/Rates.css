@@ -8,17 +8,19 @@
 .rates {
   position: absolute;
   font-weight: 300;
-  background-color: rgba(3, 3, 3, 0.75);
+  background-color: rgba(3, 3, 3, 0.881);
   padding: 20px 30px;
   border-radius: 15px;
   box-shadow: 0px 4px 20px rgba(33, 18, 18, 0.808);
-  color: #cce0dd;
+  color: rgb(230, 230, 230);
   display: flex;
   text-align: left;
   width: 90%;
   justify-content: space-around;
   align-items: center;
   z-index: 1;
+  height: 100dvh;
+  margin-top: 50dvh;
 }
 
 h2 {
@@ -36,7 +38,7 @@ p {
 ul {
   width: fit-content;
   font-size: 23px;
-  color: rgb(216, 241, 241);
+  color: rgb(230, 230, 230);
 }
 
 .subtitle {
@@ -66,8 +68,8 @@ ul {
   justify-content: space-between;
   width: 250px;
   margin: 6px;
-  padding-bottom: 5px;
-  border-bottom: 2px dotted black;
+  padding-bottom: 1dvh;
+  border-bottom: 3px dotted black;
 }
 
 .cost ul {
@@ -127,6 +129,7 @@ ul {
   display: flex;
   width: 100dvw;
   z-index: -1;
+  height: 160dvh;
 }
 
 body {
