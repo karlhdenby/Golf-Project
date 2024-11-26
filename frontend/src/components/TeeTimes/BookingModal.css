@@ -1,12 +1,73 @@
+.box {
+    display: flex;
+    flex-direction: column;
+}
+
 .moreBox {
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
 
+h1 {
+    padding: 35px;
+    padding-top: 0px;
+    margin-top: 0;
+    text-shadow: 3px 3px 3px black, 3px 3px 3px black;
+}
+
+.first-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.last-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .players {
     display: flex;
-    flex-direction: column;
     width: 100%;
-    justify-content: space-around;
+    justify-content: start;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1dvh;
+}
+
+h3 {
+    margin: 0;
+    padding: 5px;
+}
+
+.players-buttons {
+    display: flex;
+    width: 10dvw;
+    justify-content: space-evenly;
+    height: 2dvh;
+}
+
+textarea {
+    height: 1.6dvh;
+    resize: none;
+    width: 20%;
+}
+
+.active {
+    color: white;
+    background-color: rgb(151, 43, 43);
+    border: none;
+}
+
+.inactive {
+    border: none;
+}
+
+.confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

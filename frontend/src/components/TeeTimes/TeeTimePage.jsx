@@ -78,7 +78,7 @@ export const TeeTimes = () => {
           </div>
           {timeSlots.map((time) => (
             <div className="time" key={time}>
-              <h2 onClick={() => !times.includes(time) ? setModalContent(<BookingModal time={reverseDateMaker(time)}/>) : console.log(time)}className={times.includes(time) ? "unavailable" : "available"}>
+              <h2 onClick={() => !times.includes(time) ? setModalContent(<BookingModal time={time} month={month} day={day} />) : console.log(time)}className={times.includes(time) ? "unavailable" : "available"}>
                 {time}
               </h2>
             </div>
