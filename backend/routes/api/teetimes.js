@@ -37,7 +37,7 @@ router.put("/:teeTimeId", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const { username } = req.user || undefined;
+  const username = undefined;
   const { firstName, lastName, time, players, open } = req.body;
   try {
     let teeTime = await TeeTime.create({
@@ -49,7 +49,9 @@ router.post("/", async (req, res, next) => {
       open,
     });
     return res.json(teeTime);
-  } catch (error) {}
+  } catch (error) {
+    console.log(username, firstName, lastName, players,time,open)
+  }
 });
 
 router.get("/", async (req, res, next) => {

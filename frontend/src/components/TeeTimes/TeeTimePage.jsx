@@ -19,31 +19,6 @@ export const TeeTimes = () => {
     return `${hours}:${minutes}${pm ? "pm" : "am"}`;
   };
 
-  const reverseDateMaker = (date) => {
-    let [time, period] = date.split(/(am|pm)/i); // Split the time and period (AM/PM)
-    let [hours, minutes] = time.split(":");
-  
-    hours = parseInt(hours);
-  
-    if (period.toLowerCase() === "pm" && hours !== 12) {
-      hours += 12;
-    } else if (period.toLowerCase() === "am" && hours === 12) {
-      hours = 0;
-    }
-  
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-    
-    let bookingDate = new Date(currentYear, month - 1, day, hours, minutes);
-
-    if (bookingDate <= currentDate) {
-      bookingDate.setFullYear(currentYear + 1);
-    }
-  
-
-    let formattedTime = `${hours.toString().padStart(2, "0")}:${minutes}`;
-    return `${bookingDate.getFullYear()}-${(bookingDate.getMonth() + 1).toString().padStart(2, "0")}-${bookingDate.getDate().toString().padStart(2, "0")}T${formattedTime}:00`;
-  };
   
 
 
@@ -86,7 +61,12 @@ export const TeeTimes = () => {
         </div>
       );
     }
-    return slots;
+    return (
+      <div className="tee-time-page">
+      <h1>Select a Time</h1>
+      {slots}
+      </div>
+    );
   };
 
   return <div className="booking">{generateSlots()}</div>;
