@@ -48,7 +48,9 @@ export const TeeTimes = () => {
           className="no-user-sign-in-button"
           buttonText="Sign In"
           modalComponent={<LoginFormModal />} />
-        <button onClick={() => setModalContent(<BookingModal time={currentTime} month={month} day={day} />)} className="no-user-continue-button">Continue</button>
+        <button onClick={() => {
+          setModalContent(<BookingModal time={currentTime} month={month} day={day} />)
+      }} className="no-user-continue-button">Continue</button>
       </div>
     </div>
   )
@@ -72,11 +74,11 @@ export const TeeTimes = () => {
           {timeSlots.map((time) => (
             <div className="time" key={time}>
               <h2 onClick={() => {
+                setCurrentTime(time)
                 if (user) {
                 !times.includes(time) ? setModalContent(<BookingModal time={time} month={month} day={day} />) : console.log(time)
                 }
                 else {
-                  setCurrentTime(time)
                   setModalContent(noUserPrompt)
                 }
                 }} className={times.includes(time) ? "unavailable" : "available"}>
