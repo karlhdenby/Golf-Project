@@ -5,6 +5,8 @@ import './BookingModal.css'
 import { useParams } from "react-router-dom";
 import { createTeetime } from "../../store/teetimes";
 import { useDispatch } from "react-redux";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import LoginFormModal from "../LoginFormModal/LoginFormModal";
 
 export const BookingModal = (info) => {
   const months = {
@@ -24,35 +26,34 @@ export const BookingModal = (info) => {
   const reverseDateMaker = (date) => {
     let [time, period] = date.split(/(am|pm)/i); // Split the time and period (AM/PM)
     let [hours, minutes] = time.split(":");
-  
+
     hours = parseInt(hours);
-  
+
     if (period.toLowerCase() === "pm" && hours !== 12) {
       hours += 12;
     } else if (period.toLowerCase() === "am" && hours === 12) {
       hours = 0;
     }
-  
+
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
-    
+
     let bookingDate = new Date(currentYear, month - 1, day, hours, minutes);
 
     if (bookingDate <= currentDate) {
       bookingDate.setFullYear(currentYear + 1);
     }
-  
+
 
     let formattedTime = `${hours.toString().padStart(2, "0")}:${minutes}`;
     return `${bookingDate.getFullYear()}-${(bookingDate.getMonth() + 1).toString().padStart(2, "0")}-${bookingDate.getDate().toString().padStart(2, "0")}T${formattedTime}:00`;
   };
 
-  
-  const {time, month, day} = info
+
+  const { time, month, day } = info
   const [players, setPlayers] = useState(1);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const user = useSelector((state) => state.session.user);
   const { closeModal } = useModal();
   const dispatch = useDispatch()
 
@@ -69,8 +70,11 @@ export const BookingModal = (info) => {
     submit()
   }
 
+  
+
   const prompt = (
-    <div className="moreBox">
+    <div className="more-box">
+      <h1>Book a Tee-Time</h1>
       <div className="first-name">
         <h3>First Name</h3>
         <textarea onChange={(e) => setFirstName(e.target.value)} placeholder="John"></textarea>
@@ -86,7 +90,7 @@ export const BookingModal = (info) => {
           <button className={players === 2 ? "active-button" : "inactive-button"} onClick={() => setPlayers(2)} type="button">2</button>
           <button className={players === 3 ? "active-button" : "inactive-button"} onClick={() => setPlayers(3)} type="button">3</button>
           <button className={players === 4 ? "active-button" : "inactive-button"} onClick={() => setPlayers(4)} type="button">4</button>
-          </div>
+        </div>
 
       </div>
       <div className="confirm">
@@ -98,7 +102,6 @@ export const BookingModal = (info) => {
 
   return (
     <div className="box">
-      <h1>Book a Tee-Time</h1>
       {prompt}
     </div>
   );

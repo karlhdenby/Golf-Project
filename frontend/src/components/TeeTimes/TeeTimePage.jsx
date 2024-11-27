@@ -1,16 +1,20 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getTeetimes } from "../../store/teetimes";
 import "./TeeTimePage.css";
 import { BookingModal } from "./BookingModal";
 import { useModal } from "../../context/Modal";
+import OpenModalButton from "../OpenModalButton/OpenModalButton";
+import LoginFormModal from "../LoginFormModal/LoginFormModal";
 
 export const TeeTimes = () => {
+  const [currentTime, setCurrentTime] = useState("")
+  const { month, day } = useParams();
   const {setModalContent} = useModal()
   const dispatch = useDispatch();
-  const { month, day } = useParams();
   const [times, setTimes] = useState([]);
+  const user = useSelector((state) => state.session.user)
 
   const dateMaker = (date) => {
     let pm = parseInt(date.split(":")[0]) >= 12;
@@ -18,8 +22,6 @@ export const TeeTimes = () => {
     hours = pm ? hours - 12 || 12 : parseInt(hours);
     return `${hours}:${minutes}${pm ? "pm" : "am"}`;
   };
-
-  
 
 
   useEffect(() => {
@@ -35,6 +37,22 @@ export const TeeTimes = () => {
     };
     fetchRates();
   }, [dispatch, day, month]);
+
+  const noUserPrompt = (
+    <div className="no-user">
+      <h1>Not logged in</h1>
+      <h2>Would you like to sign in?</h2>
+      <p> ( You can still book a tee-time without signing in! )</p>
+      <div className="no-user-buttons">
+        <OpenModalButton
+          className="no-user-sign-in-button"
+          buttonText="Sign In"
+          modalComponent={<LoginFormModal />} />
+        <button onClick={() => setModalContent(<BookingModal time={currentTime} month={month} day={day} />)} className="no-user-continue-button">Continue</button>
+      </div>
+    </div>
+  )
+
 
   const generateSlots = () => {
     const slots = [];
@@ -53,7 +71,15 @@ export const TeeTimes = () => {
           </div>
           {timeSlots.map((time) => (
             <div className="time" key={time}>
-              <h2 onClick={() => !times.includes(time) ? setModalContent(<BookingModal time={time} month={month} day={day} />) : console.log(time)}className={times.includes(time) ? "unavailable" : "available"}>
+              <h2 onClick={() => {
+                if (user) {
+                !times.includes(time) ? setModalContent(<BookingModal time={time} month={month} day={day} />) : console.log(time)
+                }
+                else {
+                  setCurrentTime(time)
+                  setModalContent(noUserPrompt)
+                }
+                }} className={times.includes(time) ? "unavailable" : "available"}>
                 {time}
               </h2>
             </div>
