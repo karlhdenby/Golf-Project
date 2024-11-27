@@ -1,0 +1,29 @@
+.log-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-in-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.log-in-form label {
+    display: flex;
+    justify-content: end;
+    width:  20dvw;
+}
+
+.log-in-form label input {
+    display: flex;
+    margin-left: 1dvw;
+}
+
+.log-in-form button {
+    display: flex;
+    width: fit-content;
+    align-self: center;
+    margin-top: 3dvh;
+}

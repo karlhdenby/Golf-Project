@@ -5,7 +5,7 @@
     height: fit-content;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(7, 5, 15, 0.779);
+    background-color: rgba(7, 5, 15, 0.98);
     border-bottom: 2px solid black;
     z-index: 1;
     font-size: 1.1em;
@@ -70,13 +70,7 @@ ul a {
 .profile-button {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-}
-
-.profile-button button{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 
 
@@ -84,4 +78,27 @@ ul a {
     opacity: .85;
     width: auto;
     height: 10dvh;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+}
+
+.links button {
+    display: flex;
+    border: none;
+    margin-left: 1dvw;
+    background-color: transparent;
+    text-decoration: none;
+    color: rgb(72, 22, 22);
+    font-size: large;
+    margin-right: 1dvw;
+    border: 1px solid rgb(72, 22, 22);
+    padding: 7px;
+}
+
+.links button:hover {
+    cursor: pointer;
+    
 }

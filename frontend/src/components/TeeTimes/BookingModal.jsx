@@ -51,14 +51,20 @@ export const BookingModal = (info) => {
 
 
   const { time, month, day } = info
+  console.log(time)
   const [players, setPlayers] = useState(1);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [errors, setErrors] = useState("")
   const { closeModal } = useModal();
   const dispatch = useDispatch()
 
   const handleSubmit = () => {
     const submit = async () => {
+      if (!players || !firstName || !lastName || !time) {
+        setErrors("Please fill form to completion")
+      }
+      else {
       await dispatch(createTeetime({
         players,
         firstName,
@@ -66,6 +72,7 @@ export const BookingModal = (info) => {
         open: (players < 4),
         time: (reverseDateMaker(time))
       }))
+    }
     }
     submit()
   }
@@ -75,6 +82,7 @@ export const BookingModal = (info) => {
   const prompt = (
     <div className="more-box">
       <h1>Book a Tee-Time</h1>
+      {errors ? <h4>{errors}</h4> : ""}
       <div className="first-name">
         <h3>First Name</h3>
         <textarea onChange={(e) => setFirstName(e.target.value)} placeholder="John"></textarea>

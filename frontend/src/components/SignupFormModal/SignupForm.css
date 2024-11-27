@@ -1,0 +1,30 @@
+.sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sign-up-form label {
+    display: flex;
+    justify-content: end;
+    width:  20dvw;
+}
+
+.sign-up-form label input {
+    display: flex;
+    margin-left: 1dvw;
+}
+
+.sign-up-form button {
+    display: flex;
+    width: fit-content;
+    align-self: center;
+    margin-top: 3dvh;
+}

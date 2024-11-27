@@ -25,6 +25,8 @@ export const Rates = () => {
         alt="Picture of clubhouse"
       />
       <div className="rates">
+        <h1>Rates</h1>
+        <div className="season">
         <div className="spring">
           <div className="subtitle">
             <h2>Spring</h2>
@@ -196,6 +198,7 @@ export const Rates = () => {
               <ul>$30</ul>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>

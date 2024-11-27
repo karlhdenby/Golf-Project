@@ -38,7 +38,7 @@ export const TeeTimes = () => {
     fetchRates();
   }, [dispatch, day, month]);
 
-  const noUserPrompt = (
+  const noUserPrompt = (time) => (
     <div className="no-user">
       <h1>Not logged in</h1>
       <h2>Would you like to sign in?</h2>
@@ -49,7 +49,7 @@ export const TeeTimes = () => {
           buttonText="Sign In"
           modalComponent={<LoginFormModal />} />
         <button onClick={() => {
-          setModalContent(<BookingModal time={currentTime} month={month} day={day} />)
+          setModalContent(<BookingModal time={time} month={month} day={day} />)
       }} className="no-user-continue-button">Continue</button>
       </div>
     </div>
@@ -73,13 +73,14 @@ export const TeeTimes = () => {
           </div>
           {timeSlots.map((time) => (
             <div className="time" key={time}>
-              <h2 onClick={() => {
-                setCurrentTime(time)
+              <h2 onClick={async () => {
+                await setCurrentTime(time)
+                console.log(currentTime)
                 if (user) {
-                !times.includes(time) ? setModalContent(<BookingModal time={time} month={month} day={day} />) : console.log(time)
+                !times.includes(currentTime) ? setModalContent(<BookingModal time={time} month={month} day={day} />) : console.log(time)
                 }
                 else {
-                  setModalContent(noUserPrompt)
+                  setModalContent(noUserPrompt(time))
                 }
                 }} className={times.includes(time) ? "unavailable" : "available"}>
                 {time}
