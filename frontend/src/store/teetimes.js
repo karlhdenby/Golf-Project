@@ -68,7 +68,7 @@ const teetimesReducer = (state = initialState, action) => {
       return {...state, allTeetimes};
     }
     case NEW_TEETIME: {
-      return { ...state, teetime: action.payload.teetime };
+      return { ...state, newTeetime: action.payload };
     }
 
     default:

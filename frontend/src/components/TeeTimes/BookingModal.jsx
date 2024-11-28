@@ -1,9 +1,8 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useState } from "react";
 import './BookingModal.css'
 import { createTeetime } from "../../store/teetimes";
-import { useDispatch } from "react-redux";
 
 export const BookingModal = (info) => {
   const months = {
@@ -47,7 +46,7 @@ export const BookingModal = (info) => {
   };
 
 
-  const { time, month, day } = info
+  const { time, month, day, navigate } = info
   console.log(time)
   const [players, setPlayers] = useState(1);
   const [firstName, setFirstName] = useState("");
@@ -73,6 +72,7 @@ export const BookingModal = (info) => {
         time: (reverseDateMaker(time))
       }))
       closeModal()
+      navigate('/teetimes/manage')
     }
     }
     submit()

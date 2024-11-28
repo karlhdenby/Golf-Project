@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTeetimes } from "../../store/teetimes";
@@ -9,6 +9,7 @@ import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 
 export const TeeTimes = () => {
+  const navigate = useNavigate()
   const [currentTime, setCurrentTime] = useState("")
   const { month, day } = useParams();
   const {setModalContent} = useModal()
@@ -49,7 +50,8 @@ export const TeeTimes = () => {
           buttonText="Sign In"
           modalComponent={<LoginFormModal />} />
         <button onClick={() => {
-          setModalContent(<BookingModal time={time} month={month} day={day} />)
+          navigate('booking')
+          setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate}/>)
       }} className="no-user-continue-button">Continue</button>
       </div>
     </div>
@@ -74,15 +76,16 @@ export const TeeTimes = () => {
           {timeSlots.map((time) => (
             <div className="time" key={time}>
               <h2 onClick={async () => {
+                if (!times.includes(time)) {
                 await setCurrentTime(time)
                 console.log(currentTime)
                 if (user) {
-                !times.includes(currentTime) ? setModalContent(<BookingModal time={time} month={month} day={day} />) : console.log(time)
+                !times.includes(currentTime) ? setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate} />) : console.log(time)
                 }
                 else {
                   setModalContent(noUserPrompt(time))
                 }
-                }} className={times.includes(time) ? "unavailable" : "available"}>
+              }}} className={times.includes(time) ? "unavailable" : "available"}>
                 {time}
               </h2>
             </div>
