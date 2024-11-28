@@ -55,17 +55,20 @@ export const BookingModal = (info) => {
   const [players, setPlayers] = useState(1);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const user = useSelector((state) => state.session.user)
   const [errors, setErrors] = useState("")
   const { closeModal } = useModal();
   const dispatch = useDispatch()
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     const submit = async () => {
       if (!players || !firstName || !lastName || !time) {
         setErrors("Please fill form to completion")
       }
       else {
       await dispatch(createTeetime({
+        username: user?.username || undefined,
         players,
         firstName,
         lastName,
