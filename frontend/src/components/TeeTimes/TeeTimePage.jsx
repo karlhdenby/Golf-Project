@@ -8,6 +8,13 @@ import { useModal } from "../../context/Modal";
 import OpenModalButton from "../OpenModalButton/OpenModalButton";
 import LoginFormModal from "../LoginFormModal/LoginFormModal";
 
+const dateMaker = (date) => {
+  let pm = parseInt(date.split(":")[0]) >= 12;
+  let [hours, minutes] = date.split(":");
+  hours = pm ? hours - 12 || 12 : parseInt(hours);
+  return `${hours}:${minutes}${pm ? "pm" : "am"}`;
+};
+
 export const TeeTimes = () => {
   const navigate = useNavigate()
   const [currentTime, setCurrentTime] = useState("")
@@ -17,12 +24,6 @@ export const TeeTimes = () => {
   const [times, setTimes] = useState([]);
   const user = useSelector((state) => state.session.user)
 
-  const dateMaker = (date) => {
-    let pm = parseInt(date.split(":")[0]) >= 12;
-    let [hours, minutes] = date.split(":");
-    hours = pm ? hours - 12 || 12 : parseInt(hours);
-    return `${hours}:${minutes}${pm ? "pm" : "am"}`;
-  };
 
 
   useEffect(() => {
@@ -50,7 +51,6 @@ export const TeeTimes = () => {
           buttonText="Sign In"
           modalComponent={<LoginFormModal />} />
         <button onClick={() => {
-          navigate('booking')
           setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate}/>)
       }} className="no-user-continue-button">Continue</button>
       </div>
