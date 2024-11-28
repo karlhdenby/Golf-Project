@@ -2,11 +2,8 @@ import { useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useState } from "react";
 import './BookingModal.css'
-import { useParams } from "react-router-dom";
 import { createTeetime } from "../../store/teetimes";
 import { useDispatch } from "react-redux";
-import OpenModalButton from "../OpenModalButton/OpenModalButton";
-import LoginFormModal from "../LoginFormModal/LoginFormModal";
 
 export const BookingModal = (info) => {
   const months = {
@@ -75,6 +72,7 @@ export const BookingModal = (info) => {
         open: (players < 4),
         time: (reverseDateMaker(time))
       }))
+      closeModal()
     }
     }
     submit()

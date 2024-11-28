@@ -5,6 +5,7 @@ export const monthMaker = (when = "now") => {
   let date = [];
   if (when === "now") date = currentDate.toString().split(" ");
   else if (when === "next") date = oneMonthFromNow.toString().split(" ");
+  console.log(date)
 
   const daysInMonth = {
     Jan: 31,
@@ -43,15 +44,22 @@ export const monthMaker = (when = "now") => {
 
   const numDays = daysInMonth[date[1]];
   const dayNum = daysInWeek[date[0]];
+  const today = date[2]
 
-  const mapDates = (numDays, dayNum) => {
-    const firstDay = 7 - (7 - dayNum + (parseInt(date[2]) % 7) - 2);
-    return firstDay;
+  const mapDates = (dayNum, today) => {
+    let num = dayNum;
+    let day = today;
+    while (day > 1) {
+      num--
+      day--
+      if (num === 0) num = 7
+    }
+    return num
   };
 
   const month = {};
   let num = 0;
-  let dayOfWeek = mapDates(numDays, dayNum);
+  let dayOfWeek = mapDates(dayNum, today);
   while (num < numDays) {
     month[num + 1] = reversedDaysInWeek[dayOfWeek];
     if (dayOfWeek + 1 === 8) dayOfWeek = 0;
@@ -96,3 +104,6 @@ export const weekMaker = (when) => {
   let final = monthArray.reverse();
   return final;
 };
+
+
+console.log(monthMaker("next"))

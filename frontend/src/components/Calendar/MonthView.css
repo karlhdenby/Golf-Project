@@ -73,7 +73,7 @@ body {
 
 .month div {
   display: flex;
-  
+  width: 48dvw;
 }
 
 .month div div {
@@ -124,6 +124,12 @@ body {
   background-color: rgb(119, 113, 113);
 }
 
+
 .week-0 {
   align-self: flex-end;
+  justify-content: end;
+}
+
+.week-0 div {
+  display: flex;
 }
