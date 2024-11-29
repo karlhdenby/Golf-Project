@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const GET_TEETIMES = "Teetimes/getTeetimes";
 const NEW_TEETIME = "Teetimes/newTeetime";
+const EDIT_TEETIME = "Teetimes/editTeetime"
 
 const loadTeetimes = (teetimes) => {
   return {
@@ -13,6 +14,13 @@ const loadTeetimes = (teetimes) => {
 const newTeetime = (teetime) => {
   return {
     type: NEW_TEETIME,
+    payload: teetime,
+  };
+};
+
+const updateTeetime = (teetime) => {
+  return {
+    type: EDIT_TEETIME,
     payload: teetime,
   };
 };
@@ -56,6 +64,32 @@ export const createTeetime = (teetime) => async (dispatch) => {
   }
 };
 
+export const editTeetime = (teetime) => async (dispatch) => {
+  console.log(teetime);
+  try {
+    const response = await csrfFetch(`/api/teetimes/${teetime.id}`, {
+      method: "PUT",
+      body: JSON.stringify(teetime),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      const teetimeNew = await response.json();
+      console.log(teetimeNew);
+      dispatch(updateTeetime(teetimeNew));
+      return teetimeNew;
+    } else {
+      const errorData = await response.json();
+      return { errors: errorData.errors };
+    }
+  } catch (error) {
+    return { errors: ["An unexpected error occurred."] };
+  }
+};
+
+
 const initialState = {};
 
 const teetimesReducer = (state = initialState, action) => {
@@ -69,6 +103,11 @@ const teetimesReducer = (state = initialState, action) => {
     }
     case NEW_TEETIME: {
       return { ...state, newTeetime: action.payload };
+    }
+    case EDIT_TEETIME: {
+      const newState = {...state}
+      newState[action.payload.id] = action.payload
+      return { ...newState, newTeetime: action.payload };
     }
 
     default:

@@ -50,8 +50,8 @@ export const ManageTime = () => {
       setTime(dateMaker(teetime.time));
     };
     
-    if (!teetime.time) fetch();
-  }, [dispatch, user, teetime]);
+    if (!time) fetch();
+  }, [dispatch, user, time, teetime]);
   
   console.log(teetime);
   console.log(months[teetime.time?.split("T")[0].split("-")[1]])

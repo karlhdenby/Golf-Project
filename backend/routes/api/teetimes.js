@@ -19,20 +19,17 @@ router.delete("/:teeTimeId", async (req, res, next) => {
   });
 
 router.put("/:teeTimeId", async (req, res, next) => {
+  console.log("/n HELLO")
   let teeTimeId = req.params.teeTimeId;
-  const { username } = req.user || undefined;
   const body = req.body;
   try {
     let teeTime = await TeeTime.findByPk(teeTimeId);
-    if (teeTime.username !== username) {
-      return res.status(403).json({
-        message: "Tee Time must belong to current user",
-      });
-    }
+    console.log(teeTime)
     await teeTime.update(body)
-    return res.json(teeTime);
+    return res.json(body);
   } catch (error) {
-    res.json(await error)
+    let shoe = await error
+    console.log(await shoe)
   }
 });
 
