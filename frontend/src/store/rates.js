@@ -36,6 +36,7 @@ export const getRates = () => async (dispatch) => {
     await dispatch(loadRates(data.Rates));
     data.Rates.forEach((a) => rates[a.item] = a)
     return rates
+    
   }
 };
 
