@@ -33,7 +33,7 @@ export const getRates = () => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    dispatch(loadRates(data.Rates));
+    await dispatch(loadRates(data.Rates));
     data.Rates.forEach((a) => rates[a.item] = a)
     return rates
   }
@@ -53,7 +53,7 @@ export const createRate = (rate) => async (dispatch) => {
     if (response.ok) {
       const rateNew = await response.json();
       console.log(rateNew)
-      dispatch(newRate(rateNew));
+      await dispatch(newRate(rateNew));
       return rateNew;
     } else {
       const errorData = await response.json();
@@ -78,7 +78,7 @@ export const editRate = (rate) => async (dispatch) => {
     if (response.ok) {
       const rateNew = await response.json();
       console.log(rateNew)
-      dispatch(changeRate(rateNew));
+      await dispatch(changeRate(rateNew));
       return rateNew;
     } else {
       const errorData = await response.json();

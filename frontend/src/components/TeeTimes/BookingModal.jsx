@@ -66,7 +66,6 @@ export const BookingModal = (info) => {
   
 
   const handleSubmit = (e) => {
-    console.log(reverseDateMaker(time))
     e.preventDefault();
     const submit = async () => {
       if (!players || !first || !last || !time) {

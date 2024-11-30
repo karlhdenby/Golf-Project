@@ -41,7 +41,7 @@ export const getTeetimes = () => async (dispatch) => {
   if (response.ok) {
     const data = await response.json();
     console.log(await data.teeTimes);
-    dispatch(loadTeetimes(data.teeTimes));
+    await dispatch(loadTeetimes(data.teeTimes));
     data.teeTimes.forEach((a) => (teetimesObj[a.id] = a));
     return teetimesObj;
   }
@@ -61,7 +61,7 @@ export const createTeetime = (teetime) => async (dispatch) => {
     if (response.ok) {
       const teetimeNew = await response.json();
       console.log(teetimeNew);
-      dispatch(newTeetime(teetimeNew));
+      await dispatch(newTeetime(teetimeNew));
       return teetimeNew;
     } else {
       const errorData = await response.json();
@@ -86,7 +86,7 @@ export const editTeetime = (teetime) => async (dispatch) => {
     if (response.ok) {
       const teetimeNew = await response.json();
       console.log(teetimeNew);
-      dispatch(updateTeetime(teetimeNew));
+      await dispatch(updateTeetime(teetimeNew));
       return teetimeNew;
     } else {
       const errorData = await response.json();
@@ -103,7 +103,7 @@ export const cancelTeetime = (id) => async (dispatch) => {
 
     if (response.ok) {
       let res = await response.json()
-      dispatch(deleteTeetime(id))
+      await dispatch(deleteTeetime(id))
       return res
     }
   } catch (error) {
