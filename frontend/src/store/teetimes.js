@@ -2,7 +2,8 @@ import { csrfFetch } from "./csrf";
 
 const GET_TEETIMES = "Teetimes/getTeetimes";
 const NEW_TEETIME = "Teetimes/newTeetime";
-const EDIT_TEETIME = "Teetimes/editTeetime"
+const EDIT_TEETIME = "Teetimes/editTeetime";
+const CANCEL_TEETIME = "Teetimes/deleteTeetime"
 
 const loadTeetimes = (teetimes) => {
   return {
@@ -24,6 +25,13 @@ const updateTeetime = (teetime) => {
     payload: teetime,
   };
 };
+
+const deleteTeetime = (id) => {
+  return {
+    type: CANCEL_TEETIME,
+    payload: id,
+  }
+}
 
 export const getTeetimes = () => async (dispatch) => {
   const response = await csrfFetch("/api/teetimes");
@@ -89,6 +97,19 @@ export const editTeetime = (teetime) => async (dispatch) => {
   }
 };
 
+export const cancelTeetime = (id) => async (dispatch) => {
+  try {
+    const response = await csrfFetch(`/api/teetimes/${id}`, { method: "DELETE" });
+
+    if (response.ok) {
+      let res = await response.json()
+      dispatch(deleteTeetime(id))
+      return res
+    }
+  } catch (error) {
+    return {errors : "Deletion failed"}
+  }
+};
 
 const initialState = {};
 
@@ -99,15 +120,22 @@ const teetimesReducer = (state = initialState, action) => {
       action.payload.forEach((a) => {
         allTeetimes.push(a);
       });
-      return {...state, allTeetimes};
+      return { ...state, allTeetimes };
     }
     case NEW_TEETIME: {
       return { ...state, newTeetime: action.payload };
     }
     case EDIT_TEETIME: {
-      const newState = {...state}
-      newState[action.payload.id] = action.payload
+      const newState = { ...state };
+      newState[action.payload.id] = action.payload;
       return { ...newState, newTeetime: action.payload };
+    }
+    case CANCEL_TEETIME: {
+      const newState = {...state};
+      let array = newState.allTeetimes
+      let filtered = array.filter((a) => a.id != action.payload)
+      newState.allTeetimes = filtered
+      return {...newState}
     }
 
     default:

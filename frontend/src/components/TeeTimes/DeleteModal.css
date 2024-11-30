@@ -1,0 +1,20 @@
+.delete-modal-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.delete-modal-box button {
+    display: flex;
+    width: 8dvw;
+    height: 5dvh;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-bottom: 2dvh;
+    font-size: large;
+    background-color: brown;
+    border: 2px solid black;
+}

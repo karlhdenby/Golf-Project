@@ -23,7 +23,7 @@ const months = {
 export const BookingModal = (info) => {
   const { time, month, day, firstName, lastName, playerCount, id, navigate } =
     info;
-  console.log(time);
+  console.log(info);
   const [players, setPlayers] = useState(playerCount || 1);
   const [first, setFirst] = useState(firstName || "");
   const [last, setLast] = useState(lastName || "");
@@ -33,37 +33,40 @@ export const BookingModal = (info) => {
   const dispatch = useDispatch();
   const edit = id;
 
-  const reverseDateMaker = (date) => {
-    let [time, period] = date.split(/(am|pm)/i); // Split the time and period (AM/PM)
-    let [hours, minutes] = time.split(":");
-
+  const reverseDateMaker = (time) => {
+    let [rawTime, period] = time.split(/(am|pm)/i);
+    let [hours, minutes] = rawTime.trim().split(":");
+  
     hours = parseInt(hours);
-
+    minutes = parseInt(minutes);
+  
     if (period.toLowerCase() === "pm" && hours !== 12) {
       hours += 12;
     } else if (period.toLowerCase() === "am" && hours === 12) {
       hours = 0;
     }
-
-    const currentDate = new Date();
-    const currentYear = currentDate.getFullYear();
-
-    let bookingDate = new Date(currentYear, month - 1, day, hours, minutes);
-
-    if (bookingDate <= currentDate) {
-      bookingDate.setFullYear(currentYear + 1);
+  
+    if (isNaN(hours) || isNaN(minutes) || isNaN(month) || isNaN(day)) {
+      throw new Error("Invalid input values for time, month, or day.");
     }
-
-    let formattedTime = `${hours.toString().padStart(2, "0")}:${minutes}`;
-    return `${bookingDate.getFullYear()}-${(bookingDate.getMonth() + 1)
-      .toString()
-      .padStart(2, "0")}-${bookingDate
-      .getDate()
-      .toString()
-      .padStart(2, "0")}T${formattedTime}:00`;
+  
+    const currentDate = new Date();
+    const currentYear = currentDate.getUTCFullYear();
+  
+    let bookingDate = new Date(Date.UTC(currentYear, month - 1, day, hours, minutes));
+  
+    if (bookingDate < currentDate) {
+      bookingDate.setUTCFullYear(currentYear + 1);
+    }
+  
+    return bookingDate.toISOString();
   };
+  
+  
+  
 
   const handleSubmit = (e) => {
+    console.log(reverseDateMaker(time))
     e.preventDefault();
     const submit = async () => {
       if (!players || !first || !last || !time) {

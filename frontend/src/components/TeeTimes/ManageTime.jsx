@@ -5,6 +5,7 @@ import { BookingModal } from "./BookingModal";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getTeetimes } from "../../store/teetimes";
+import { DeleteModal } from "./DeleteModal";
 
 const months = {
   1: "January",
@@ -18,14 +19,7 @@ const months = {
   9: "September",
   10: "October",
   11: "November",
-  12: "December"
-};
-
-const dateMaker = (date) => {
-  let pm = parseInt(date.split(":")[0]) >= 12;
-  let [hours, minutes] = date.split(":");
-  hours = pm ? hours - 12 || 12 : parseInt(hours);
-  return `${hours}:${minutes}${pm ? "pm" : "am"}`;
+  12: "December",
 };
 
 export const ManageTime = () => {
@@ -34,44 +28,65 @@ export const ManageTime = () => {
   const { setModalContent } = useModal();
   const [teetime, setTeetime] = useState({});
   const user = useSelector((state) => state.session.user);
-  const [time, setTime] = useState( undefined)
-  const [date, setDate] = useState( undefined)
-  let open = false
+  const newest = useSelector((state) => state.teetimes.newTeetime);
+  const [time, setTime] = useState(undefined);
+  const [date, setDate] = useState(undefined);
+  let open = false;
+
+  const dateMaker = (date) => {
+    if (!date) return null;
+  
+    const [hours, minutes] = date.split("T")[1].split(":").map(Number);
+  
+    const pm = hours >= 12;
+    const displayHours = pm ? (hours === 12 ? 12 : hours - 12) : (hours === 0 ? 12 : hours);
+  
+    return `${displayHours}:${minutes.toString().padStart(2, "0")}${pm ? "pm" : "am"}`;
+  };
+  
 
   useEffect(() => {
     const fetch = async () => {
       const tees = await dispatch(getTeetimes());
-      const me = Object.values(tees).filter(
-        (a) => a.username === user.username
-      );
+      const me = Object.values(tees);
       const created = me.findLast((a) => a);
       setTeetime(created);
-      setDate(teetime.time.split("T")[0]);
-      setTime(dateMaker(teetime.time));
+      setDate(created?.time?.split("T")[0]);
+      setTime(dateMaker(created?.time));
     };
-    
+
     if (!time) fetch();
   }, [dispatch, user, time, teetime]);
-  
+
+  console.log(date, time);
   console.log(teetime);
-  console.log(months[teetime.time?.split("T")[0].split("-")[1]])
+  console.log(months[teetime?.time?.split("T")[0].split("-")[1]]);
 
   const handleEdit = () => {
     setModalContent(
       <BookingModal
-        time={dateMaker(teetime.time)}
-        month={teetime.time?.split("T")[0].split("-")[1]}
-        day={teetime.time?.split("T")[0].split("-")[2]}
-        firstName={teetime.firstName}
-        lastName={teetime.lastName}
-        playerCount={teetime.players}
+        time={dateMaker(teetime?.time)}
+        month={teetime?.time?.split("T")[0].split("-")[1]}
+        day={teetime?.time?.split("T")[0].split("-")[2]}
+        firstName={newest?.firstName || teetime?.firstName}
+        lastName={newest?.lastName || teetime?.lastName}
+        playerCount={newest?.players || teetime?.players}
         navigate={navigate}
-        id={teetime.id}
+        id={teetime?.id}
       />
     );
   };
 
-  return (
+  const handleDelete = (e) => {
+    e.preventDefault()
+    const remove = async () => {
+      await setModalContent(<DeleteModal id={teetime.id} navigate={navigate}/>);
+    }
+    console.log("delete")
+    remove()
+  };
+
+  const works = (
     <div className="manage-time">
       <h1>Success!</h1>
       {user ? (
@@ -85,13 +100,31 @@ export const ManageTime = () => {
       <p>
         {date} {time}
       </p>
-      <p>First Name: {teetime.firstName}</p>
-      <p>Last Name: {teetime.lastName}</p>
-      <p>Players: {teetime.players}</p>
-      <p>Open: {open.toString()}</p>
-      {user ? <p>Username: {teetime.username}</p> : ""}
+      <p>First Name: {newest?.firstName || teetime?.firstName}</p>
+      <p>Last Name: {newest?.lastName || teetime?.lastName}</p>
+      <p>Players: {newest?.players || teetime?.players}</p>
+      <p>Open: {newest?.open.toString() || open.toString()}</p>
+      {user?.username ? (
+        <p>Username: {newest?.username || teetime?.username}</p>
+      ) : (
+        <p></p>
+      )}
       <h2>Make changes to your tee time?</h2>
-      <button onClick={handleEdit}>Edit</button>
+      <button className="edit-button-time" onClick={handleEdit}>
+        Edit
+      </button>
+      {user?.username ? (<button className="delete-button-time" onClick={handleDelete}>
+        Delete
+      </button>) : <></>}
+      
+    </div>
+  );
+
+  return newest?.firstName || teetime?.firstName ? (
+    works
+  ) : (
+    <div className="manage-time">
+      <h1>No available teetimes</h1>
     </div>
   );
 };

@@ -9,6 +9,7 @@ import { Menu } from "./components/Menu/Menu";
 import { MonthView } from "./components/Calendar/MonthView";
 import { TeeTimes } from "./components/TeeTimes/TeeTimePage";
 import { ManageTime } from "./components/TeeTimes/ManageTime";
+import { DeletePage } from "./components/TeeTimes/SuccessfullyDelete";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
         path: "/teetimes/manage",
         element: <ManageTime />,
       },
+      {
+        path: '/teetimes/deleted',
+        element: <DeletePage />
+      }
     ],
   },
 ]);
