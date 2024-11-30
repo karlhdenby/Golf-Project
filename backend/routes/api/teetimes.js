@@ -21,12 +21,28 @@ router.delete("/:teeTimeId", async (req, res, next) => {
 router.put("/:teeTimeId", async (req, res, next) => {
   console.log("/n HELLO")
   let teeTimeId = req.params.teeTimeId;
+  console.log(teeTimeId)
   const body = req.body;
+  console.log(body)
   try {
     let teeTime = await TeeTime.findByPk(teeTimeId);
     console.log(teeTime)
-    await teeTime.update(body)
-    return res.json(body);
+    await teeTime.update({
+      username: body.username,
+      players: body.players,
+      firstName: body.firstName,
+      lastName: body.lastName,
+      open: body.open,
+      time: body.time
+    })
+    return res.json({
+      username: body.username,
+      players: body.players,
+      firstName: body.firstName,
+      lastName: body.lastName,
+      open: body.open,
+      time: body.time
+    });
   } catch (error) {
     let shoe = await error
     console.log(await shoe)
