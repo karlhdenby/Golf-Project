@@ -1,144 +1,146 @@
 .box {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .box h4 {
-    display: block;
-    align-self: center;
-    color: red;
-    padding: 0;
-    margin: 0;
+  display: block;
+  align-self: center;
+  color: red;
+  padding: 0;
+  margin: 0;
 }
 
 .more-box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 h1 {
-    padding: 25px;
-    padding-top: 0px;
-    margin-top: 0;
-    text-shadow: 3px 3px 3px black, 3px 3px 3px black;
+  padding: 25px;
+  padding-top: 0px;
+  margin-top: 0;
+  text-shadow: 3px 3px 3px black, 3px 3px 3px black;
 }
 
 .first-name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .last-name {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .players {
-    display: flex;
-    width: 100%;
-    justify-content: start;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1dvh;
+  display: flex;
+  width: 100%;
+  justify-content: start;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1dvh;
 }
 
 h3 {
-    margin: 0;
-    padding: 5px;
+  margin: 0;
+  padding: 5px;
 }
 
 .players-buttons {
-    display: flex;
-    width: 10dvw;
-    justify-content: space-evenly;
-    height: 2dvh;
+  display: flex;
+  width: 10dvw;
+  justify-content: space-evenly;
+  height: 2dvh;
 }
 
 textarea {
-    height: 1.8dvh;
-    resize: none;
-    width: 20%;
+  resize: none;
+}
+
+.more-box textarea {
+  height: 1.8dvh;
+  width: 20%;
 }
 
 .active-button {
-    color: white;
-    background-color: rgb(151, 43, 43);
-    border: none;
+  color: white;
+  background-color: rgb(151, 43, 43);
+  border: none;
 }
 
 .inactive-button {
-    border: none;
+  border: none;
 }
 
 .confirm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 5dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 5dvh;
 }
 
 .confirm button {
-    border: 2px solid white;
-    box-shadow: 1px 2px 3px 3px rgb(0, 0, 0);
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    border: none;
+  border: 2px solid white;
+  box-shadow: 1px 2px 3px 3px rgb(0, 0, 0);
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  border: none;
 }
 
 .no-user {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 40dvh;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 40dvh;
 }
 
 .no-user h1 {
-    margin-bottom: 2dvh;
+  margin-bottom: 2dvh;
 }
 
 .no-user-buttons {
-    display: flex;
-    justify-content: space-around;
-    width: 35dvw;
-    margin-top: 2dvh;
+  display: flex;
+  justify-content: space-around;
+  width: 35dvw;
+  margin-top: 2dvh;
 }
 
 .no-user-buttons button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 13dvw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13dvw;
 }
 
 .no-user-buttons button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .no-user-sign-in-button {
-    display: flex;
-    border: none;
-    color: white;
-    font-size: large;
-    border: 2px solid black;
-    background-color: brown;
-    text-shadow: 1px 1px 1px 1px black;
+  display: flex;
+  border: none;
+  color: white;
+  font-size: large;
+  border: 2px solid black;
+  background-color: brown;
+  text-shadow: 1px 1px 1px 1px black;
 }
 
 .no-user-continue-button {
-    padding: 5px;
-    display: flex;
-    color: white;
-    font-size: large;
-    border: 2px solid black;
-    font-weight: 500;
-    background-color: brown;
-    text-shadow: 1px 1px 1px 1px black;
+  padding: 5px;
+  display: flex;
+  color: white;
+  font-size: large;
+  border: 2px solid black;
+  font-weight: 500;
+  background-color: brown;
+  text-shadow: 1px 1px 1px 1px black;
 }

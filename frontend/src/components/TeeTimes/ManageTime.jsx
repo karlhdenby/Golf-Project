@@ -88,7 +88,7 @@ export const ManageTime = () => {
 
   const works = (
     <div className="manage-time">
-      <h1>Success!</h1>
+      <h1>Book a tee-time</h1>
       {user ? (
         ""
       ) : (

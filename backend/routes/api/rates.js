@@ -22,7 +22,7 @@ router.put("/:rateId", async (req, res, next) => {
   const body = req.body;
   try {
     let rate = await Rate.findByPk(rateId);
-    if (req.user.rank > 3) {
+    if (req.user.rank < 3) {
       return res.status(403).json({
         message: "User does not have permission to edit this item",
       });

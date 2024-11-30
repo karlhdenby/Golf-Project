@@ -9,7 +9,8 @@ import { Menu } from "./components/Menu/Menu";
 import { MonthView } from "./components/Calendar/MonthView";
 import { TeeTimes } from "./components/TeeTimes/TeeTimePage";
 import { ManageTime } from "./components/TeeTimes/ManageTime";
-import { DeletePage } from "./components/TeeTimes/SuccessfullyDelete";
+import { SuccessPage } from "./components/TeeTimes/SuccessfullyDelete";
+import { EditRates } from "./components/Rates/EditRates";
 
 function Layout() {
   const dispatch = useDispatch();
@@ -58,8 +59,12 @@ const router = createBrowserRouter([
         element: <ManageTime />,
       },
       {
-        path: '/teetimes/deleted',
-        element: <DeletePage />
+        path: '/teetimes/success',
+        element: <SuccessPage />
+      },
+      {
+        path: '/rates/manage',
+        element: <EditRates />
       }
     ],
   },

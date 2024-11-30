@@ -10,8 +10,7 @@ export const Rates = () => {
   useEffect(() => {
     const fetchRates = async () => {
       const allRates = await dispatch(getRates());
-      console.log(allRates);
-      setRates(allRates);
+      setRates(await allRates);
     };
     fetchRates();
   }, [dispatch]);

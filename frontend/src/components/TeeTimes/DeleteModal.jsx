@@ -14,7 +14,7 @@ export const DeleteModal = (info) => {
     const remove = async () => {
       await dispatch(cancelTeetime(id));
       console.log("success!");
-      navigate("/teetimes/deleted");
+      navigate("/teetimes/success");
       closeModal();
     };
     remove();

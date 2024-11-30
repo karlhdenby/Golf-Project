@@ -1,0 +1,29 @@
+.rates-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name {
+    display: flex;
+    align-items: center;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    width: 15dvw;
+    height: 12dvh;
+    margin-top: 2dvh;
+    text-align: center;
+}
+
+.description textarea {
+    display: flex;
+    height: 8dvh;
+}

@@ -14,6 +14,7 @@
     display: flex;
     justify-content: end;
     width:  20dvw;
+    margin-top: 1dvh;
 }
 
 .log-in-form label input {
@@ -23,7 +24,16 @@
 
 .log-in-form button {
     display: flex;
-    width: fit-content;
+    border: 2px solid white;
+    box-shadow: 1px 2px 3px 3px rgb(0, 0, 0);
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    border: none;
+    width: 8dvw;
     align-self: center;
-    margin-top: 3dvh;
+    justify-content: center;
+    margin-top: 5dvh;
+    margin-bottom: 2dvh;
 }

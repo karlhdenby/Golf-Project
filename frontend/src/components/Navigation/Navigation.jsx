@@ -56,6 +56,13 @@ function Navigation({ isLoaded }) {
             Book a Tee Time
           </NavLink>
         </ul>
+        {sessionUser?.employee ? (
+          <ul>
+          <NavLink id="manage-rates" to="/rates/manage">
+            Manage Rates
+          </NavLink>
+        </ul>
+        ) : <></>}
         {isLoaded && sessionLinks}
       </ul>
     </div>

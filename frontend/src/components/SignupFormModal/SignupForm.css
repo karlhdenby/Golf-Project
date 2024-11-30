@@ -15,16 +15,30 @@
     display: flex;
     justify-content: end;
     width:  20dvw;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1dvh;
 }
 
 .sign-up-form label input {
     display: flex;
     margin-left: 1dvw;
+    align-items: center;
+    justify-content: center;
 }
 
 .sign-up-form button {
     display: flex;
-    width: fit-content;
+    border: 2px solid white;
+    box-shadow: 1px 2px 3px 3px rgb(0, 0, 0);
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    border: none;
+    width: 8dvw;
     align-self: center;
-    margin-top: 3dvh;
+    justify-content: center;
+    margin-top: 5dvh;
+    margin-bottom: 2dvh;
 }
