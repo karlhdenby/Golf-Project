@@ -71,6 +71,8 @@ export const RatesModal = (info) => {
           placeholder="10"
           onChange={(e) => setPrice(e.target.value)}
           defaultValue={price}
+          min={1}
+          max={100000}
         ></input>
       </div>
       <div className="description">
