@@ -15,7 +15,6 @@ export const RatesModal = (info) => {
   console.log(edit, rate);
 
   const handleEdit = () => {
-    if (!name || !price) setErrors("Please fill out form to completion");
     const edit = async () => {
       await dispatch(
         editRate({
@@ -26,9 +25,12 @@ export const RatesModal = (info) => {
         })
       );
     };
-    edit();
-    navigate("/teetimes/success");
-    closeModal();
+    if (!name || !price) setErrors("Please fill out form to completion");
+    else {
+      edit();
+      navigate("/teetimes/success");
+      closeModal();
+    }
   };
 
   const handleAdd = () => {
@@ -41,9 +43,12 @@ export const RatesModal = (info) => {
         })
       );
     };
-    add();
-    navigate("/teetimes/success");
-    closeModal();
+    if (!name || !price) setErrors("Please fill out form to completion");
+    else {
+      add();
+      navigate("/teetimes/success");
+      closeModal();
+    }
   };
 
   return (
@@ -53,6 +58,7 @@ export const RatesModal = (info) => {
       <div className="name">
         <h3>Name</h3>
         <textarea
+          maxLength={50}
           onChange={(e) => setName(e.target.value)}
           placeholder="18holes"
           defaultValue={name}
@@ -64,11 +70,13 @@ export const RatesModal = (info) => {
           type="number"
           placeholder="10"
           onChange={(e) => setPrice(e.target.value)}
+          defaultValue={price}
         ></input>
       </div>
       <div className="description">
         <h3>Description</h3>
         <textarea
+          maxLength={150}
           onChange={(e) => setDescription(e.target.value)}
           defaultValue={description || ""}
         ></textarea>

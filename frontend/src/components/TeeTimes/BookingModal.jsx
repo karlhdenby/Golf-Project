@@ -36,34 +36,33 @@ export const BookingModal = (info) => {
   const reverseDateMaker = (time) => {
     let [rawTime, period] = time.split(/(am|pm)/i);
     let [hours, minutes] = rawTime.trim().split(":");
-  
+
     hours = parseInt(hours);
     minutes = parseInt(minutes);
-  
+
     if (period.toLowerCase() === "pm" && hours !== 12) {
       hours += 12;
     } else if (period.toLowerCase() === "am" && hours === 12) {
       hours = 0;
     }
-  
+
     if (isNaN(hours) || isNaN(minutes) || isNaN(month) || isNaN(day)) {
       throw new Error("Invalid input values for time, month, or day.");
     }
-  
+
     const currentDate = new Date();
     const currentYear = currentDate.getUTCFullYear();
-  
-    let bookingDate = new Date(Date.UTC(currentYear, month - 1, day, hours, minutes));
-  
+
+    let bookingDate = new Date(
+      Date.UTC(currentYear, month - 1, day, hours, minutes)
+    );
+
     if (bookingDate < currentDate) {
       bookingDate.setUTCFullYear(currentYear + 1);
     }
-  
+
     return bookingDate.toISOString();
   };
-  
-  
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -120,6 +119,7 @@ export const BookingModal = (info) => {
       <div className="first-name">
         <h3>First Name</h3>
         <textarea
+          maxLength={25}
           onChange={(e) => setFirst(e.target.value)}
           placeholder="John"
           defaultValue={firstName}
@@ -128,6 +128,7 @@ export const BookingModal = (info) => {
       <div className="last-name">
         <h3>Last Name</h3>
         <textarea
+          maxLength={25}
           onChange={(e) => setLast(e.target.value)}
           placeholder="Doe"
           defaultValue={lastName}

@@ -94,7 +94,7 @@ export const ManageTime = () => {
       ) : (
         <h3>
           WARNING: You are not signed in. If you click off this page you will no
-          longer be able to edit your tee time
+          longer be able to edit your tee time.
         </h3>
       )}
       <p>

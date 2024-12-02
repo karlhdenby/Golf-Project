@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+.rates-modal h4 {
+    color: red;
+}
+
 .name {
     display: flex;
     align-items: center;
