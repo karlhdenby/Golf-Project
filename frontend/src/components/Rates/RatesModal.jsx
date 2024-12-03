@@ -12,7 +12,7 @@ export const RatesModal = (info) => {
   const [name, setName] = useState(rate?.item || "");
   const [price, setPrice] = useState(rate?.price || 1);
   const [description, setDescription] = useState(rate?.description || "");
-  console.log(edit, rate);
+  (edit, rate);
 
   const handleEdit = () => {
     const edit = async () => {

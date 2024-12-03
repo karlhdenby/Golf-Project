@@ -43,7 +43,7 @@ export const MonthView = () => {
   const nextYear = oneMonthFromNow.toDateString().split(" ")[3];
   const monthName = (currentDate.toString().split(" ")[1].toLowerCase());
   const nextMonthName = (oneMonthFromNow.toString().split(" ")[1].toLowerCase());
-  console.log(nextWeeks)
+  (nextWeeks)
   // HELPER FUNCTIONS => END HERE
 
   return (

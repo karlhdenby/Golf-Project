@@ -34,7 +34,6 @@ export const TeeTimes = () => {
           a.time.split("T")[0].split("-")[2] === day
       ).map((a) => dateMaker(a.time.split("T")[1].split(".")[0]));
       setTimes(timesArr);
-      console.log(timesArr)
     };
     fetchRates();
   }, [dispatch, day, month]);
@@ -79,7 +78,6 @@ export const TeeTimes = () => {
               <h2 onClick={async () => {
                 if (!times.includes(time)) {
                   await setCurrentTime(time)
-                  console.log(currentTime)
                   if (user) {
                     !times.includes(currentTime) ? setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate} />) : console.log(time)
                   }

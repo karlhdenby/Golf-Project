@@ -40,7 +40,6 @@ export const getTeetimes = () => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log(await data.teeTimes);
     await dispatch(loadTeetimes(data.teeTimes));
     data.teeTimes.forEach((a) => (teetimesObj[a.id] = a));
     return teetimesObj;
@@ -48,7 +47,6 @@ export const getTeetimes = () => async (dispatch) => {
 };
 
 export const createTeetime = (teetime) => async (dispatch) => {
-  console.log(teetime);
   try {
     const response = await csrfFetch("/api/teetimes", {
       method: "POST",
@@ -60,7 +58,6 @@ export const createTeetime = (teetime) => async (dispatch) => {
 
     if (response.ok) {
       const teetimeNew = await response.json();
-      console.log(teetimeNew);
       await dispatch(newTeetime(teetimeNew));
       return teetimeNew;
     } else {
@@ -73,7 +70,7 @@ export const createTeetime = (teetime) => async (dispatch) => {
 };
 
 export const editTeetime = (teetime) => async (dispatch) => {
-  console.log(teetime);
+  (teetime);
   try {
     const response = await csrfFetch(`/api/teetimes/${teetime.id}`, {
       method: "PUT",
@@ -85,7 +82,6 @@ export const editTeetime = (teetime) => async (dispatch) => {
 
     if (response.ok) {
       const teetimeNew = await response.json();
-      console.log(teetimeNew);
       await dispatch(updateTeetime(teetimeNew));
       return teetimeNew;
     } else {

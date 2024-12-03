@@ -20,7 +20,7 @@ export const EditRates = () => {
     fetchRates();
   }, [dispatch]);
 
-  console.log(rates);
+  (rates);
 
   const handleEdit = (rate) => {
     setModalContent(

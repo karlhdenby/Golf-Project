@@ -41,7 +41,7 @@ export const getRates = () => async (dispatch) => {
 };
 
 export const createRate = (rate) => async (dispatch) => {
-  console.log(rate)
+  (rate)
   try {
     const response = await csrfFetch("/api/rates", {
       method: "POST",
@@ -53,7 +53,7 @@ export const createRate = (rate) => async (dispatch) => {
 
     if (response.ok) {
       const rateNew = await response.json();
-      console.log(rateNew)
+      (rateNew)
       await dispatch(newRate(rateNew));
       return rateNew;
     } else {
@@ -66,7 +66,7 @@ export const createRate = (rate) => async (dispatch) => {
 };
 
 export const editRate = (rate) => async (dispatch) => {
-  console.log(rate)
+  (rate)
   try {
     const response = await csrfFetch(`/api/rates/${rate.id}`, {
       method: "PUT",
@@ -78,7 +78,7 @@ export const editRate = (rate) => async (dispatch) => {
 
     if (response.ok) {
       const rateNew = await response.json();
-      console.log(rateNew)
+      (rateNew)
       await dispatch(changeRate(rateNew));
       return rateNew;
     } else {
@@ -98,7 +98,7 @@ const ratesReducer = (state = initialState, action) => {
     case GET_RATES: {
       const allRates = {};
       action.payload.forEach((a) => (allRates[a.item] = a));
-      console.log(allRates)
+      (allRates)
       return allRates;
     }
     case NEW_RATE: {

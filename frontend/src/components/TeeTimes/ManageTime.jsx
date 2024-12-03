@@ -58,9 +58,9 @@ export const ManageTime = () => {
     if (!time) fetch();
   }, [dispatch, user, time, teetime]);
 
-  console.log(date, time);
-  console.log(teetime);
-  console.log(months[teetime?.time?.split("T")[0].split("-")[1]]);
+  (date, time);
+  (teetime);
+  (months[teetime?.time?.split("T")[0].split("-")[1]]);
 
   const handleEdit = () => {
     setModalContent(
@@ -82,7 +82,7 @@ export const ManageTime = () => {
     const remove = async () => {
       await setModalContent(<DeleteModal id={teetime.id} navigate={navigate}/>);
     }
-    console.log("delete")
+    ("delete")
     remove()
   };
 

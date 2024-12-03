@@ -23,7 +23,7 @@ const months = {
 export const BookingModal = (info) => {
   const { time, month, day, firstName, lastName, playerCount, id, navigate } =
     info;
-  console.log(info);
+  (info);
   const [players, setPlayers] = useState(playerCount || 1);
   const [first, setFirst] = useState(firstName || "");
   const [last, setLast] = useState(lastName || "");
