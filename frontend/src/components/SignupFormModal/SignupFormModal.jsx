@@ -23,8 +23,8 @@ function SignupFormModal() {
         sessionActions.signup({
           email,
           username,
-          firstName,
-          lastName,
+          firstName: firstName,
+          lastName: lastName,
           password
         })
       )

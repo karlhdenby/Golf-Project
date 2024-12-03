@@ -71,6 +71,8 @@ router.post("/", validateLogin, async (req, res, next) => {
     email: user.email,
     username: user.username,
     employee: user.employee,
+    firstName: user.firstName,
+    lastName: user.lastName,
     rank: user.rank,
   };
 
