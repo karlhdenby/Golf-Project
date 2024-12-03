@@ -58,6 +58,7 @@ export const RatesModal = (info) => {
       <div className="name">
         <h3>Name</h3>
         <textarea
+          required
           maxLength={50}
           onChange={(e) => setName(e.target.value)}
           placeholder="18holes"
@@ -67,6 +68,7 @@ export const RatesModal = (info) => {
       <div className="last-name">
         <h3>Price</h3>
         <input
+          required
           type="number"
           placeholder="10"
           onChange={(e) => setPrice(e.target.value)}
@@ -80,8 +82,7 @@ export const RatesModal = (info) => {
         <textarea
           maxLength={150}
           onChange={(e) => setDescription(e.target.value)}
-          defaultValue={description || ""}
-        ></textarea>
+        >{description || ""}</textarea>
       </div>
       <div className="confirm">
         <button onClick={edit ? handleEdit : handleAdd}>
