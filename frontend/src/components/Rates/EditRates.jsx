@@ -20,7 +20,6 @@ export const EditRates = () => {
     fetchRates();
   }, [dispatch]);
 
-  (rates);
 
   const handleEdit = (rate) => {
     setModalContent(
@@ -29,8 +28,7 @@ export const EditRates = () => {
 
   }
 
-  const handleAdd = (e) => {
-    e.preventDefault()
+  const handleAdd = () => {
     setModalContent(
       <RatesModal edit={false} navigate={navigate}/>
     )

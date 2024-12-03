@@ -35,11 +35,12 @@ router.put("/:rateId", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const { item, price} = req.body;
+  const { item, price, description} = req.body;
   try {
     let rate = await Rate.create({
       item,
       price,
+      description
     });
     return res.json(rate);
   } catch (error) {

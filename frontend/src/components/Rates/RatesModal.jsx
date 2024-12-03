@@ -12,7 +12,6 @@ export const RatesModal = (info) => {
   const [name, setName] = useState(rate?.item || "");
   const [price, setPrice] = useState(rate?.price || 1);
   const [description, setDescription] = useState(rate?.description || "");
-  (edit, rate);
 
   const handleEdit = () => {
     const edit = async () => {
@@ -80,9 +79,13 @@ export const RatesModal = (info) => {
       <div className="description">
         <h3>Description</h3>
         <textarea
+          defaultValue={description || ""}
           maxLength={150}
-          onChange={(e) => setDescription(e.target.value)}
-        >{description || ""}</textarea>
+          onChange={(e) => {
+            setDescription(e.target.value);
+            console.log(e.target.value);
+          }}
+        ></textarea>
       </div>
       <div className="confirm">
         <button onClick={edit ? handleEdit : handleAdd}>

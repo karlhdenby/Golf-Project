@@ -7,20 +7,20 @@ import { useEffect, useState } from "react";
 import { getTeetimes } from "../../store/teetimes";
 import { DeleteModal } from "./DeleteModal";
 
-const months = {
-  1: "January",
-  2: "February",
-  3: "March",
-  4: "April",
-  5: "May",
-  6: "June",
-  7: "July",
-  8: "August",
-  9: "September",
-  10: "October",
-  11: "November",
-  12: "December",
-};
+// const months = {
+//   1: "January",
+//   2: "February",
+//   3: "March",
+//   4: "April",
+//   5: "May",
+//   6: "June",
+//   7: "July",
+//   8: "August",
+//   9: "September",
+//   10: "October",
+//   11: "November",
+//   12: "December",
+// };
 
 export const ManageTime = () => {
   const dispatch = useDispatch();
@@ -58,9 +58,7 @@ export const ManageTime = () => {
     if (!time) fetch();
   }, [dispatch, user, time, teetime]);
 
-  (date, time);
-  (teetime);
-  (months[teetime?.time?.split("T")[0].split("-")[1]]);
+
 
   const handleEdit = () => {
     setModalContent(
@@ -82,7 +80,6 @@ export const ManageTime = () => {
     const remove = async () => {
       await setModalContent(<DeleteModal id={teetime.id} navigate={navigate}/>);
     }
-    ("delete")
     remove()
   };
 
