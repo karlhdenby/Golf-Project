@@ -6,18 +6,18 @@ import { createTeetime } from "../../store/teetimes";
 import { editTeetime } from "../../store/teetimes";
 
 const months = {
-  1: "January",
-  2: "February",
-  3: "March",
-  4: "April",
-  5: "May",
-  6: "June",
-  7: "July",
-  8: "August",
-  9: "September",
-  10: "October",
-  11: "November",
-  12: "December",
+  "01": "January",
+  "02": "February",
+  "03": "March",
+  "04": "April",
+  "05": "May",
+  "06": "June",
+  "07": "July",
+  "08": "August",
+  "09": "September",
+  "10": "October",
+  "11": "November",
+  "12": "December",
 };
 
 export const BookingModal = (info) => {
@@ -51,15 +51,18 @@ export const BookingModal = (info) => {
     }
 
     const currentDate = new Date();
-    const currentYear = currentDate.getUTCFullYear();
+    let oneMonthFromNow = new Date();
+    oneMonthFromNow.setMonth(currentDate.getMonth() + 1);
+    let currentYear
+
+    if (month - 1 == currentDate.getMonth()) currentYear = currentDate.getUTCFullYear();
+    else if (month - 1 == oneMonthFromNow.getMonth()) currentYear = oneMonthFromNow.getUTCFullYear();
+
 
     let bookingDate = new Date(
       Date.UTC(currentYear, month - 1, day, hours, minutes)
     );
 
-    if (bookingDate < currentDate) {
-      bookingDate.setUTCFullYear(currentYear + 1);
-    }
 
     return bookingDate.toISOString();
   };

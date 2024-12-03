@@ -23,24 +23,24 @@ export const MonthView = () => {
     dec: "December",
   };
   const monthsNum = {
-    jan: 1,
-    feb: 2,
-    mar: 3,
-    apr: 4,
-    may: 5,
-    jun: 6,
-    jul: 7,
-    aug: 8,
-    sep: 9,
-    oct: 10,
-    nov: 11,
-    dec: 12,
+    jan: "01",
+    feb: "02",
+    mar: "03",
+    apr: "04",
+    may: "05",
+    jun: "06",
+    jul: "07",
+    aug: "08",
+    sep: "09",
+    oct: "10",
+    nov: "11",
+    dec: "12",
   };
   const weeks = weekMaker();
   const nextWeeks = weekMaker("next");
   const highlight = new Date().toString().split(" ")[2];
   const year = currentDate.toDateString().split(" ")[3];
-  const nextYear = currentDate.toDateString().split(" ")[3];
+  const nextYear = oneMonthFromNow.toDateString().split(" ")[3];
   const monthName = (currentDate.toString().split(" ")[1].toLowerCase());
   const nextMonthName = (oneMonthFromNow.toString().split(" ")[1].toLowerCase());
   console.log(nextWeeks)
@@ -82,7 +82,7 @@ export const MonthView = () => {
                 {week.map((day) => {
                   return (
                     <div
-                      onClick={() => navigate(`/teetimes/${monthsNum[monthName]}/${day}`)}
+                      onClick={() => navigate(`/teetimes/${monthsNum[monthName]}/${day.length > 1 ? {day} : `0${day}`}`)}
                       key={day}
                       className={day}
                       id={day == highlight ? "today" : ""}
@@ -127,7 +127,7 @@ export const MonthView = () => {
               <div className={`week-${weekIndex}`} key={weekIndex}>
                 {week.map((day) => {
                   return (
-                    <div onClick={() => navigate(`/teetimes/${monthsNum[nextMonthName]}/${day}`)} key={day} className={day}>
+                    <div onClick={() => navigate(`/teetimes/${monthsNum[nextMonthName]}/${day.length > 1 ? {day} : `0${day}`}`)} key={day} className={day}>
                       <p>{day}</p>
                     </div>
                   );

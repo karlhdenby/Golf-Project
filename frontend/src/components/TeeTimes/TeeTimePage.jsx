@@ -19,7 +19,7 @@ export const TeeTimes = () => {
   const navigate = useNavigate()
   const [currentTime, setCurrentTime] = useState("")
   const { month, day } = useParams();
-  const {setModalContent} = useModal()
+  const { setModalContent } = useModal()
   const dispatch = useDispatch();
   const [times, setTimes] = useState([]);
   const user = useSelector((state) => state.session.user)
@@ -29,16 +29,17 @@ export const TeeTimes = () => {
   useEffect(() => {
     const fetchRates = async () => {
       const data = await dispatch(getTeetimes());
-      const timesArr = Object.values(data)
-        .filter(
-          (a) => a.time.split("T")[0].split("-")[1] === month &&
-                 a.time.split("T")[0].split("-")[2] === day
-        )
-        .map((a) => dateMaker(a.time.split("T")[1].split(".")[0]));
+      const timesArr = Object.values(data).filter(
+        (a) => a.time.split("T")[0].split("-")[1] === month  &&
+          a.time.split("T")[0].split("-")[2] === day
+      ).map((a) => dateMaker(a.time.split("T")[1].split(".")[0]));
       setTimes(timesArr);
+      console.log(timesArr)
     };
     fetchRates();
   }, [dispatch, day, month]);
+
+
 
   const noUserPrompt = (time) => (
     <div className="no-user">
@@ -51,8 +52,8 @@ export const TeeTimes = () => {
           buttonText="Sign In"
           modalComponent={<LoginFormModal />} />
         <button onClick={() => {
-          setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate}/>)
-      }} className="no-user-continue-button">Continue</button>
+          setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate} />)
+        }} className="no-user-continue-button">Continue</button>
       </div>
     </div>
   )
@@ -77,15 +78,16 @@ export const TeeTimes = () => {
             <div className="time" key={time}>
               <h2 onClick={async () => {
                 if (!times.includes(time)) {
-                await setCurrentTime(time)
-                console.log(currentTime)
-                if (user) {
-                !times.includes(currentTime) ? setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate} />) : console.log(time)
+                  await setCurrentTime(time)
+                  console.log(currentTime)
+                  if (user) {
+                    !times.includes(currentTime) ? setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate} />) : console.log(time)
+                  }
+                  else {
+                    setModalContent(noUserPrompt(time))
+                  }
                 }
-                else {
-                  setModalContent(noUserPrompt(time))
-                }
-              }}} className={times.includes(time) ? "unavailable" : "available"}>
+              }} className={times.includes(time) ? "unavailable" : "available"}>
                 {time}
               </h2>
             </div>
@@ -95,8 +97,8 @@ export const TeeTimes = () => {
     }
     return (
       <div className="tee-time-page">
-      <h1>Select a Time</h1>
-      {slots}
+        <h1>Select a Time</h1>
+        {slots}
       </div>
     );
   };
