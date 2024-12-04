@@ -2,7 +2,7 @@
 .background-menu {
     position: relative;
     z-index: -1;
-    width: 100dvw;
+    width: 110dvw;
     height: 220dvh;
 }
 
@@ -28,7 +28,6 @@ h1 {
     width: 50%;
     height: 110%;
     border: none;
-    margin-top: 75dvh;
 }
 
 .menu {
