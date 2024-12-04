@@ -51,6 +51,9 @@ function Navigation({ isLoaded }) {
         <ul>
           <NavLink to="/restaurant">Restaurant</NavLink>
         </ul>
+        <NavLink id="manage-booking" to="/teetimes/manage">
+          Manage Booking
+        </NavLink>
         <ul>
           <NavLink id="book" to="/calendar">
             Book a Tee Time
@@ -58,11 +61,13 @@ function Navigation({ isLoaded }) {
         </ul>
         {sessionUser?.employee ? (
           <ul>
-          <NavLink id="manage-rates" to="/rates/manage">
-            Manage Rates
-          </NavLink>
-        </ul>
-        ) : <></>}
+            <NavLink id="manage-rates" to="/rates/manage">
+              Manage Rates
+            </NavLink>
+          </ul>
+        ) : (
+          <></>
+        )}
         {isLoaded && sessionLinks}
       </ul>
     </div>

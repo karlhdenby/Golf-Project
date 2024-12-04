@@ -2,12 +2,12 @@ import { useState } from "react";
 import "./RatesModal.css";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import { editRate, createRate } from "../../store/rates";
+import { editRate, createRate, } from "../../store/rates";
 
 export const RatesModal = (info) => {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
-  const { edit, rate, navigate } = info;
+  const { edit, rate } = info;
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(rate?.item || "");
   const [price, setPrice] = useState(rate?.price || 1);
@@ -27,7 +27,6 @@ export const RatesModal = (info) => {
     if (!name || !price) setErrors("Please fill out form to completion");
     else {
       edit();
-      navigate("/teetimes/success");
       closeModal();
     }
   };
@@ -45,7 +44,6 @@ export const RatesModal = (info) => {
     if (!name || !price) setErrors("Please fill out form to completion");
     else {
       add();
-      navigate("/teetimes/success");
       closeModal();
     }
   };

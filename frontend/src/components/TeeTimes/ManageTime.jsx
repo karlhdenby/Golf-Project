@@ -86,14 +86,6 @@ export const ManageTime = () => {
   const works = (
     <div className="manage-time">
       <h1>Book a tee-time</h1>
-      {user ? (
-        ""
-      ) : (
-        <h3>
-          WARNING: You are not signed in. If you click off this page you will no
-          longer be able to edit your tee time.
-        </h3>
-      )}
       <p>
         {date} {time}
       </p>

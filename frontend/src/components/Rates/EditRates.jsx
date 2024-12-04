@@ -18,7 +18,7 @@ export const EditRates = () => {
       setRates(await allRates);
     };
     fetchRates();
-  }, [dispatch]);
+  }, [dispatch, rates]);
 
 
   const handleEdit = (rate) => {
