@@ -35,15 +35,20 @@ export const ManageTime = () => {
 
   const dateMaker = (date) => {
     if (!date) return null;
-  
     const [hours, minutes] = date.split("T")[1].split(":").map(Number);
-  
     const pm = hours >= 12;
-    const displayHours = pm ? (hours === 12 ? 12 : hours - 12) : (hours === 0 ? 12 : hours);
-  
-    return `${displayHours}:${minutes.toString().padStart(2, "0")}${pm ? "pm" : "am"}`;
+    const displayHours = pm
+      ? hours === 12
+        ? 12
+        : hours - 12
+      : hours === 0
+      ? 12
+      : hours;
+
+    return `${displayHours}:${minutes.toString().padStart(2, "0")}${
+      pm ? "pm" : "am"
+    }`;
   };
-  
 
   useEffect(() => {
     const fetch = async () => {
@@ -57,8 +62,6 @@ export const ManageTime = () => {
 
     if (!time) fetch();
   }, [dispatch, user, time, teetime]);
-
-
 
   const handleEdit = () => {
     setModalContent(
@@ -76,11 +79,13 @@ export const ManageTime = () => {
   };
 
   const handleDelete = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const remove = async () => {
-      await setModalContent(<DeleteModal id={teetime.id} navigate={navigate}/>);
-    }
-    remove()
+      await setModalContent(
+        <DeleteModal id={teetime.id} navigate={navigate} />
+      );
+    };
+    remove();
   };
 
   const works = (
@@ -102,10 +107,13 @@ export const ManageTime = () => {
       <button className="edit-button-time" onClick={handleEdit}>
         Edit
       </button>
-      {user?.username ? (<button className="delete-button-time" onClick={handleDelete}>
-        Delete
-      </button>) : <></>}
-      
+      {user?.username ? (
+        <button className="delete-button-time" onClick={handleDelete}>
+          Delete
+        </button>
+      ) : (
+        <></>
+      )}
     </div>
   );
 
