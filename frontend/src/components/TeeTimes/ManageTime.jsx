@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getTeetimes } from "../../store/teetimes";
 import { DeleteModal } from "./DeleteModal";
+import Cookies from "js-cookie"
+let newTime = Cookies.get("teetimeId")
 
 // const months = {
 //   1: "January",
@@ -29,6 +31,7 @@ export const ManageTime = () => {
   const [teetime, setTeetime] = useState({});
   const user = useSelector((state) => state.session.user);
   const newest = useSelector((state) => state.teetimes.newTeetime);
+  const [tees, setTees] = useState({})
   const [time, setTime] = useState(undefined);
   const [date, setDate] = useState(undefined);
   let open = false;
@@ -51,17 +54,31 @@ export const ManageTime = () => {
   };
 
   useEffect(() => {
-    const fetch = async () => {
-      const tees = await dispatch(getTeetimes());
-      const me = Object.values(tees);
-      const created = me.findLast((a) => a);
-      setTeetime(created);
-      setDate(created?.time?.split("T")[0]);
-      setTime(dateMaker(created?.time));
+    const fetchTimes = async () => {
+      const newTees = await dispatch(getTeetimes());
+      console.log(newTees)
+      setTees(newTees)
     };
+    console.log(newTime, Object.values(tees), teetime)
+    if (Object.values(tees).length < 1) {
+      fetchTimes()
+    }
+  }, [dispatch, user, tees, teetime ]);
 
-    if (!time) fetch();
-  }, [dispatch, user, time, teetime]);
+  useEffect(() => {
+    const fetchTime = async () => {
+      console.log(tees)
+      const newTeetime = tees[newTime]
+      setTeetime(newTeetime)
+      setTime(dateMaker(newTeetime.time))
+      setDate(newTeetime.time.split("T")[0])
+    }
+    console.log(newTime, Object.values(tees), teetime)
+    if (Object.values(tees).length > 1) {
+      fetchTime()
+    }
+  }, [dispatch, user, tees, teetime ]);
+
 
   const handleEdit = () => {
     setModalContent(
@@ -121,7 +138,7 @@ export const ManageTime = () => {
     works
   ) : (
     <div className="manage-time">
-      <h1>No available teetimes</h1>
+      <h1>No teetimes found</h1>
     </div>
   );
 };

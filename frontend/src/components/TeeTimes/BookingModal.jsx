@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./BookingModal.css";
 import { createTeetime } from "../../store/teetimes";
 import { editTeetime } from "../../store/teetimes";
+import Cookies from "js-cookie";
 
 const months = {
   "01": "January",
@@ -15,15 +16,14 @@ const months = {
   "07": "July",
   "08": "August",
   "09": "September",
-  "10": "October",
-  "11": "November",
-  "12": "December",
+  10: "October",
+  11: "November",
+  12: "December",
 };
 
 export const BookingModal = (info) => {
   const { time, month, day, firstName, lastName, playerCount, id, navigate } =
     info;
-  (info);
   const [players, setPlayers] = useState(playerCount || 1);
   const [first, setFirst] = useState(firstName || "");
   const [last, setLast] = useState(lastName || "");
@@ -53,27 +53,28 @@ export const BookingModal = (info) => {
     const currentDate = new Date();
     let oneMonthFromNow = new Date();
     oneMonthFromNow.setMonth(currentDate.getMonth() + 1);
-    let currentYear
+    let currentYear;
 
-    if (month - 1 == currentDate.getMonth()) currentYear = currentDate.getUTCFullYear();
-    else if (month - 1 == oneMonthFromNow.getMonth()) currentYear = oneMonthFromNow.getUTCFullYear();
-
+    if (month - 1 == currentDate.getMonth())
+      currentYear = currentDate.getUTCFullYear();
+    else if (month - 1 == oneMonthFromNow.getMonth())
+      currentYear = oneMonthFromNow.getUTCFullYear();
 
     let bookingDate = new Date(
       Date.UTC(currentYear, month - 1, day, hours, minutes)
     );
 
-
     return bookingDate.toISOString();
   };
 
   const handleSubmit = (e) => {
+    let newTime;
     e.preventDefault();
     const submit = async () => {
       if (!players || !first || !last || !time) {
         setErrors("Please fill form to completion");
       } else {
-        await dispatch(
+        newTime = await dispatch(
           createTeetime({
             username: user?.username || undefined,
             players,
@@ -83,6 +84,8 @@ export const BookingModal = (info) => {
             time: reverseDateMaker(time),
           })
         );
+        console.log(newTime);
+        Cookies.set("teetimeId", newTime.id, { expires: 7 });
         navigate("/teetimes/manage");
         closeModal();
       }
@@ -91,13 +94,14 @@ export const BookingModal = (info) => {
   };
 
   const handleEdit = (e) => {
+    let newTime;
     e.preventDefault();
 
     const submit = async () => {
       if (!players || !first || !last || !time) {
         setErrors("Please fill form to completion");
       } else {
-        await dispatch(
+        newTime = await dispatch(
           editTeetime({
             id,
             username: user?.username || undefined,
@@ -108,6 +112,7 @@ export const BookingModal = (info) => {
             time: reverseDateMaker(time),
           })
         );
+        Cookies.set("teetimeId", newTime.id, { expires: 7 });
         navigate("/teetimes/manage");
         closeModal();
       }
