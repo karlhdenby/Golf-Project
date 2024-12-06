@@ -59,7 +59,6 @@ export const ManageTime = () => {
       console.log(newTees)
       setTees(newTees)
     };
-    console.log(newTime, Object.values(tees), teetime)
     if (Object.values(tees).length < 1) {
       fetchTimes()
     }
@@ -73,7 +72,6 @@ export const ManageTime = () => {
       setTime(dateMaker(newTeetime.time))
       setDate(newTeetime.time.split("T")[0])
     }
-    console.log(newTime, Object.values(tees), teetime)
     if (Object.values(tees).length > 1) {
       fetchTime()
     }
