@@ -79,7 +79,7 @@ export const TeeTimes = () => {
                 if (!times.includes(time)) {
                   await setCurrentTime(time)
                   if (user) {
-                    !times.includes(currentTime) ? setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate} />) : console.log(time)
+                    !times.includes(time) ? setModalContent(<BookingModal time={time} month={month} day={day} navigate={navigate} />) : console.log(time)
                   }
                   else {
                     setModalContent(noUserPrompt(time))

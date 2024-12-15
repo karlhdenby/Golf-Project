@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { getTeetimes } from "../../store/teetimes";
 import { DeleteModal } from "./DeleteModal";
 import Cookies from "js-cookie"
-let newTime = Cookies.get("teetimeId")
 
 // const months = {
 //   1: "January",
@@ -34,6 +33,7 @@ export const ManageTime = () => {
   const [tees, setTees] = useState({})
   const [time, setTime] = useState(undefined);
   const [date, setDate] = useState(undefined);
+  const [newTime, setNewTime] = useState(undefined)
   let open = false;
 
   const dateMaker = (date) => {
@@ -57,7 +57,7 @@ export const ManageTime = () => {
     const fetchTimes = async () => {
       const newTees = await dispatch(getTeetimes());
       console.log(newTees)
-      setTees(newTees)
+      setTees(await newTees)
     };
     if (Object.values(tees).length < 1) {
       fetchTimes()
@@ -67,10 +67,13 @@ export const ManageTime = () => {
   useEffect(() => {
     const fetchTime = async () => {
       console.log(tees)
-      const newTeetime = tees[newTime]
+      let cookieId = Cookies.get("teetimeId")
+      setNewTime(cookieId)
+      const newTeetime = tees[cookieId]
       setTeetime(newTeetime)
       setTime(dateMaker(newTeetime.time))
       setDate(newTeetime.time.split("T")[0])
+      
     }
     if (Object.values(tees).length > 1) {
       fetchTime()

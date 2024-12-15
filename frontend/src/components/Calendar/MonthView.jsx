@@ -43,7 +43,7 @@ export const MonthView = () => {
   const nextYear = oneMonthFromNow.toDateString().split(" ")[3];
   const monthName = (currentDate.toString().split(" ")[1].toLowerCase());
   const nextMonthName = (oneMonthFromNow.toString().split(" ")[1].toLowerCase());
-  (nextWeeks)
+  console.log(nextWeeks)
   // HELPER FUNCTIONS => END HERE
 
   return (
@@ -82,7 +82,7 @@ export const MonthView = () => {
                 {week.map((day) => {
                   return (
                     <div
-                      onClick={() => navigate(`/teetimes/${monthsNum[monthName]}/${day.length > 1 ? {day} : `0${day}`}`)}
+                      onClick={() => navigate(`/teetimes/${monthsNum[monthName]}/${day.length > 1 ? {day} : `${day}`}`)}
                       key={day}
                       className={day}
                       id={day == highlight ? "today" : ""}
