@@ -33,7 +33,6 @@ export const ManageTime = () => {
   const [tees, setTees] = useState({})
   const [time, setTime] = useState(undefined);
   const [date, setDate] = useState(undefined);
-  const [newTime, setNewTime] = useState(undefined)
   let open = false;
 
   const dateMaker = (date) => {
@@ -68,7 +67,6 @@ export const ManageTime = () => {
     const fetchTime = async () => {
       console.log(tees)
       let cookieId = Cookies.get("teetimeId")
-      setNewTime(cookieId)
       const newTeetime = tees[cookieId]
       setTeetime(newTeetime)
       setTime(dateMaker(newTeetime.time))
