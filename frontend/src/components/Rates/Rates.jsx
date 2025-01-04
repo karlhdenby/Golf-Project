@@ -15,7 +15,6 @@ export const Rates = () => {
     fetchRates();
   }, [dispatch]);
 
-  (rates);
   return (
     <div className="fees">
       <img

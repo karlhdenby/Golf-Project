@@ -5,7 +5,6 @@ export const monthMaker = (when = "now") => {
   let date = [];
   if (when === "now") date = currentDate.toString().split(" ");
   else if (when === "next") date = oneMonthFromNow.toString().split(" ");
-  console.log(date)
 
   const daysInMonth = {
     Jan: 31,
@@ -105,5 +104,3 @@ export const weekMaker = (when) => {
   return final;
 };
 
-
-console.log(monthMaker("next"))

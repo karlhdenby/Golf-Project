@@ -4,7 +4,6 @@ import { useModal } from "../../context/Modal";
 import "./DeleteModal.css";
 
 export const DeleteModal = (info) => {
-  (info) 
   const {id, navigate} = info
   const { closeModal } = useModal();
   const dispatch = useDispatch();
@@ -13,7 +12,6 @@ export const DeleteModal = (info) => {
     e.preventDefault();
     const remove = async () => {
       await dispatch(cancelTeetime(id));
-      ("success!");
       navigate("/teetimes/success");
       closeModal();
     };
