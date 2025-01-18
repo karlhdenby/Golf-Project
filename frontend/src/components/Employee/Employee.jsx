@@ -1,1 +1,1 @@
-import
+export const Employee = 
